@@ -1,21 +1,26 @@
 /**index.wxss**/
-.userinfo {
+
+.container {
+  width: 90%;
+}
+
+.search_container {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.search_input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0px 5px;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.search_input_wrap {
+  flex: 2;
 }
 
-.usermotto {
-  margin-top: 200px;
+.search_input_funs {
+  flex: 1;
+  display: flex;
+  
 }

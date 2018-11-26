@@ -1,12 +1,14 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/login",
+    
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "文件管理系统",
     "navigationBarTextStyle":"black"
   }
 }
