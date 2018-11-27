@@ -10,6 +10,11 @@ Page({
   
   onLoad: function () {
     
+  },
+  onPullDownRefresh:function(){
+    console.log("fresh");
+  },
+  onReachBottom:function(){
+    console.log("down");
   }
-    
 })

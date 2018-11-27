@@ -1,12 +1,33 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/login/login",
-    
-    "pages/logs/logs"
+    "pages/task/task",
+    "pages/me/me"
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home-sel.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/task/task",
+        "iconPath": "./images/task.png",
+        "selectedIconPath": "./images/task-sel.png",
+        "text": "任务"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "iconPath": "./images/me.png",
+        "selectedIconPath": "./images/me-sel.png",
+        "text": "我的"
+      }
+    ]
+  },
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "文件管理系统",
     "navigationBarTextStyle":"black"

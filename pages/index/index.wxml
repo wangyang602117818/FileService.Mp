@@ -2,10 +2,159 @@
 <view class="container">
   <view class='search_container'>
     <view class='search_input_wrap'>
+      <image src='../../images/search.png' class='search_icon' />
       <input type="text" class='search_input' confirm-type="search" />
     </view>
     <view class='search_input_funs'>
-      <input type="text" class='search_input'/>
+      <text class="iconfont icon-m-order"></text>
+      <text class="iconfont icon-m-grid"></text>
+      <text class="iconfont icon-m-add"></text>
+    </view>
+  </view>
+  <view class="res_container">
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
+    </view>
+    <view class="res_line">
+      <image src="../../images/1_162252_2.jpg" class="res_image" />
+      <view class="res_meta">
+        <view class="res_meta_title">services broker.sql</view>
+        <view class="res_meta_subtitle">
+          2.79MB | 2018-11-09 09:43:53
+        </view>
+      </view>
+      <view class="res_option">
+        <text class="iconfont icon-m-selected bold gray"></text>
+      </view>
     </view>
   </view>
 </view>

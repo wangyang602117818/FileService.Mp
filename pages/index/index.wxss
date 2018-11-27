@@ -7,20 +7,90 @@
 .search_container {
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search_icon {
+  position: absolute;
+  display: inline-block;
+  height: 30rpx;
+  width: 30rpx;
+  margin-top: 6rpx;
+  margin-left: 6rpx;
 }
 
 .search_input {
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 0px 5px;
+  border-radius: 16rpx;
+  padding-left: 40rpx;
+  height: 40rpx;
+  min-height: 40rpx;
+  font-size: 28rpx;
 }
 
 .search_input_wrap {
-  flex: 2;
+  flex: 3;
 }
 
 .search_input_funs {
   flex: 1;
   display: flex;
-  
+  justify-content:space-between;
+  align-items: center;
+  margin-left: 25rpx;
+}
+
+.search_input_funs text {
+  display: inline-block;
+  font-size: 38rpx;
+}
+
+.res_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.res_line {
+  flex: 1;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e3e4e4;
+  margin-top: 20rpx;
+}
+
+.res_line image {
+  width: 120rpx;
+  height: 90%;
+}
+
+.res_line .res_meta {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 10rpx;
+  height: 100%;
+}
+
+.res_line .res_meta .res_meta_title {
+  font-size: 35rpx;
+  flex: 1;
+}
+
+.res_line .res_meta .res_meta_subtitle {
+  display: flex;
+  flex: 1;
+  font-size: 25rpx;
+  align-items: center;
+}
+
+.res_line .res_option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10rpx;
+  width: 50rpx;
+  height: 100%;
 }

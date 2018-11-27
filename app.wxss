@@ -6,3 +6,40 @@
   width: 80%;
   margin: 0 auto;
 }
+@font-face {
+  font-family: 'iconfont';  /* project id 936297 */
+  src: url('//at.alicdn.com/t/font_936297_suct4t0v7j.eot');
+  src: url('//at.alicdn.com/t/font_936297_suct4t0v7j.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_936297_suct4t0v7j.woff') format('woff'),
+  url('//at.alicdn.com/t/font_936297_suct4t0v7j.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_936297_suct4t0v7j.svg#iconfont') format('svg');
+}
+
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:35rpx;
+  font-style:normal;
+  color:#5f5d5d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-m-grid:before { content: "\e65d"; }
+
+.icon-m-search:before { content: "\e600"; }
+
+.icon-m-selected:before { content: "\e60e"; }
+
+.icon-m-home:before { content: "\e60a"; }
+
+.icon-m-me:before { content: "\e6a1"; }
+
+.icon-m-left:before { content: "\e618"; }
+
+.icon-m-list:before { content: "\e64b"; }
+
+.icon-m-task:before { content: "\e6ca"; }
+
+.icon-m-add:before { content: "\e6df"; }
+
+.icon-m-order:before { content: "\e66e"; }
