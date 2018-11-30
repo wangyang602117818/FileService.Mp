@@ -1,10 +1,13 @@
 {
-  "pages":[
-    "pages/index/index",
+  "pages": [
     "pages/task/task",
+    "pages/index/index",
+    
     "pages/me/me"
   ],
   "tabBar": {
+    "color": "#5f5d5d",
+    "selectedColor": "#ff6600",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -26,10 +29,10 @@
       }
     ]
   },
-  "window":{
-    "backgroundTextStyle":"dark",
+  "window": {
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "文件管理系统",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   }
 }

@@ -9,7 +9,10 @@ Page({
   },
   
   onLoad: function () {
-    
+    // wx.request({
+    //   url: '',
+    // })
+    // wx.showLoading({ title: "loading"});
   },
   onPullDownRefresh:function(){
     console.log("fresh");
