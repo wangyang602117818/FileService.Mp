@@ -62,7 +62,7 @@
 
 .data_line {
   flex: 1;
-  height: 90rpx;
+  height: 100rpx;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #e3e4e4;
