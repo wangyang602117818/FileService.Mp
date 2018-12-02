@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/task/task",
-    "pages/index/index",
+    "pages/index/index"
     
-    "pages/me/me"
+    
   ],
   "tabBar": {
     "color": "#5f5d5d",

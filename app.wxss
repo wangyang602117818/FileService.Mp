@@ -83,7 +83,7 @@
 }
 
 .data_line .data_meta .data_meta_title {
-  font-size: 30rpx;
+  font-size: 32rpx;
   flex: 1;
 }
 
