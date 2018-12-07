@@ -1,4 +1,94 @@
-.container{
+.container {
   width: 90%;
-  border:1px solid red;
+}
+
+.account_wrap {
+  height: 90rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border-bottom: 1px solid #e3e4e4;
+}
+
+.account_wrap .iconfont {
+  font-size: 50rpx;
+  height: 75%;
+}
+
+.account_wrap .account_data_wrap {
+  flex: 1;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.account_data_wrap .account_data_name {
+  flex: 1;
+  font-size: 27rpx;
+}
+
+.account_data_wrap .account_data_role {
+  flex: 1;
+  font-size: 23rpx;
+}
+
+.account_wrap .account_right {
+  display: flex;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
+}
+
+.account_right .iconfont {
+  display: inline-block;
+  font-size: 40rpx;
+}
+
+.account_line {
+  display: flex;
+  height: 80rpx;
+  width: 100%;
+  align-items: center;
+  font-size: 25rpx;
+  border-bottom: 1px solid #e3e4e4;
+}
+
+.account_line .account_line_name {
+  flex: 1;
+  display: flex;
+}
+
+.account_line .account_line_right {
+  font-size: 23rpx;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.account_line .account_line_right .account_line_data_numb {
+  display: inline-block;
+  margin-right: 20rpx;
+}
+.login_out{
+  margin-top: 50rpx;
+  height: 80rpx;
+  width: 100%;
+  display: flex;
+}
+.button_login_out {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b6af99;
+  color: #fff;
+  border:0;
+  font-size: 30rpx;
+}
+
+.button_login_out_hover {
+  background-color: #c0baa7;
 }

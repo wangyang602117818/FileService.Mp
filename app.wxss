@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
   margin: 0 auto;
 }
 
@@ -105,11 +104,11 @@
 
 @font-face {
   font-family: 'iconfont';  /* project id 936297 */
-  src: url('//at.alicdn.com/t/font_936297_ydjapq5m1s.eot');
-  src: url('//at.alicdn.com/t/font_936297_ydjapq5m1s.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_936297_ydjapq5m1s.woff') format('woff'),
-  url('//at.alicdn.com/t/font_936297_ydjapq5m1s.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_936297_ydjapq5m1s.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_936297_uwkamlh5ska.eot');
+  src: url('//at.alicdn.com/t/font_936297_uwkamlh5ska.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_936297_uwkamlh5ska.woff') format('woff'),
+  url('//at.alicdn.com/t/font_936297_uwkamlh5ska.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_936297_uwkamlh5ska.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -119,6 +118,9 @@
   color: #5f5d5d;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.icon-m-account:before{
+ content: "\e873";
 }
 .icon-m-c:before {
   content: "\e655";
@@ -147,7 +149,7 @@
   content: "\e6a1";
 }
 
-.icon-m-left:before {
+.icon-m-right:before {
   content: "\e618";
 }
 
