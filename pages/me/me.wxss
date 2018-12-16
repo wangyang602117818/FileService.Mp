@@ -48,7 +48,7 @@
 
 .account_line {
   display: flex;
-  height: 80rpx;
+  height: 100rpx;
   width: 100%;
   align-items: center;
   font-size: 25rpx;

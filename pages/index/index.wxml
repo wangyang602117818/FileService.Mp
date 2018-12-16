@@ -10,6 +10,7 @@
       <text class="iconfont icon-m-grid"></text>
       <text class="iconfont icon-m-add"></text>
     </view>
+    
   </view>
   <view class="data_container">
     <view class="data_line">
@@ -24,6 +25,5 @@
         <text class="iconfont icon-m-selected"></text>
       </view>
     </view>
-    
   </view>
 </view>
