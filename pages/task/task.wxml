@@ -10,7 +10,7 @@
   </view>
   <view class="data_container">
     <view class="data_line">
-      <image src="../../images/1_162252_2.jpg" />
+      <view class='data_line_image_wrap' style="background-image: url('../../images/1_162252_2.jpg')"></view>
       <view class="data_meta">
         <view class="data_meta_title">services broker.sql
           <text class="iconfont icon-m-c"></text>
@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="data_line">
-      <image src="../../images/1_162252_2.jpg" />
+     <view class='data_line_image_wrap' style="background-image: url('../../images/1_162252_2.jpg')"></view>
       <view class="data_meta">
         <view class="data_meta_title">services broker.sql
           <text class="iconfont icon-m-c"></text>

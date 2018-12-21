@@ -4,8 +4,6 @@
     "pages/me/me",
     "pages/task/task"
     
-    
-    
   ],
   "tabBar": {
     "color": "#5f5d5d",

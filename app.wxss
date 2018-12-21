@@ -14,7 +14,7 @@
   align-items: center;
   position: fixed;
   background-color: #fff;
-  padding-bottom: 10rpx;
+  padding-bottom: 5rpx;
 }
 
 .search_icon {
@@ -68,16 +68,22 @@
   margin-top: 20rpx;
 }
 
-.data_line image {
-  width: 120rpx;
-  height: 85%;
+.data_line .data_line_image_wrap {
+  width: 100rpx;
+  height: 100rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .data_line .data_meta {
   display: flex;
   flex-direction: column;
   flex: 1;
-  margin-left: 10rpx;
+  margin-left: 20rpx;
   height: 100%;
 }
 
@@ -102,13 +108,31 @@
   height: 100%;
 }
 
+.data_end, .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: #5f5f5f;
+  font-size: 25rpx;
+}
+
+.loading image {
+  height: 60rpx;
+  width: 60rpx;
+}
+.search_word{
+  color: red;
+}
 @font-face {
-  font-family: 'iconfont';  /* project id 936297 */
+  font-family: 'iconfont'; /* project id 936297 */
   src: url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.eot');
   src: url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.woff') format('woff'),
-  url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.svg#iconfont') format('svg');
+         url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.woff') format('woff'),
+         url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_936297_fbq2xgjvgqb.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -120,21 +144,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-m-image:before{
- content: "\e678";
+.icon-m-image:before {
+  content: "\e678";
 }
-.icon-m-video:before{
- content: "\e71f";
+
+.icon-m-video:before {
+  content: "\e71f";
 }
-.icon-m-attachment:before{
- content: "\e6d5";
+
+.icon-m-attachment:before {
+  content: "\e6d5";
 }
-.icon-m-account:before{
- content: "\e873";
+
+.icon-m-account:before {
+  content: "\e873";
 }
+
 .icon-m-c:before {
   content: "\e655";
 }
+
 .icon-m-refresh:before {
   content: "\e61c";
 }

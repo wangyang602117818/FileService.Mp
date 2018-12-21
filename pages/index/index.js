@@ -1,23 +1,96 @@
 //index.js
 //获取应用实例
 const app = getApp()
-
+const util = require("../../utils/util.js")
 Page({
   data: {
-    motto: 'Hello World',
-    
+    getFileIcon: app.baseUrl + "files/getfileicon",
+    token: app.token,
+    pageIndex: 1,
+    pageSize: 15,
+    filter: "",
+    orderField: "CreateTime",
+    orderFieldType: "desc",
+    count: 0,
+    showLoading: false,
+    showOrder: false,
+    showAdd: false,
+    end: false,
+    result: []
   },
-  
+  con_tap(e) {
+    if (this.data.showOrder) this.setData({ showOrder: false });
+  },
+  showOrder(e) {
+    this.setData({
+      showOrder: !this.data.showOrder
+    })
+  },
+  changOrder(e) {
+    this.data.pageIndex = 1;
+    var field = e.target.id;
+    if (field) {
+      this.setData({
+        orderField: field,
+        orderFieldType: this.data.orderFieldType == "desc" ? "asc" : "desc"
+      })
+    }
+    this.getData(false, null, true);
+  },
   onLoad: function () {
-    // wx.request({
-    //   url: '',
-    // })
-    // wx.showLoading({ title: "loading"});
+    this.data.pageIndex = 1;
+    this.getData(false, null, true);
   },
-  onPullDownRefresh:function(){
-    console.log("fresh");
+  search: function (e) {
+    this.data.pageIndex = 1;
+    var value = e.detail.value;
+    this.setData({
+      filter: value
+    }, function () {
+      this.getData(false, null, true);
+    }.bind(this));
   },
-  onReachBottom:function(){
-    console.log("down");
+  getData: function (append, callback, loading) {
+    var url = app.baseUrl + "files/getfiles?" + "pageIndex=" + this.data.pageIndex + "&pageSize=" + this.data.pageSize + "&filter=" + this.data.filter;
+    if (this.data.orderField) url = url + "&orderField=" + this.data.orderField;
+    if (this.data.orderFieldType) url = url + "&orderFieldType=" + this.data.orderFieldType;
+    app.get(url, {}, function (data) {
+      if (data.code == 0) {
+        //util.setKeyWord(data, this.data.filter);
+        if (this.data.pageIndex * this.data.pageSize > data.count) {
+          this.setData({
+            end: true
+          })
+        }
+        if (append) {
+          this.data.result = this.data.result.concat(data.result);
+        } else {
+          this.data.result = data.result;
+        }
+        this.setData({
+          showLoading: true,
+          result: this.data.result,
+          count: data.count
+        });
+      } else {
+        wx.showToast({
+          title: data.message,
+          icon: "none"
+        });
+      }
+      if (callback) callback();
+    }.bind(this), loading)
+  },
+  onPullDownRefresh: function () {
+    this.data.pageIndex = 1;
+    this.getData(false, function () {
+      wx.stopPullDownRefresh();
+    }, true);
+  },
+  onReachBottom: function () {
+    if (!this.end) {
+      this.data.pageIndex = this.data.pageIndex + 1;
+      this.getData(true);
+    }
   }
 })

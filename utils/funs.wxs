@@ -1,0 +1,60 @@
+var formatMonth = function(month) {
+  return month.toString().length == 1 ? "0" + month : month;
+};
+var funs = {
+  convertFileSize: function(value) {
+    var size = parseInt(value) / 1024;
+    if (size > 1024) {
+      size = size / 1024;
+      if (size > 1024) {
+        size = size / 1024;
+        return size.toFixed(2) + " GB";
+      } else {
+        return size.toFixed(2) + " MB";
+      }
+    } else {
+      return size.toFixed(2) + " KB";
+    }
+  },
+  getFileExtension: function(value) {
+    var dot = value.lastIndexOf(".");
+    if (dot == -1) return ".unknown";
+    return value.substring(dot, value.length).toLowerCase();
+  },
+  parseBsonTime: function(value) {
+    if (!value) {
+      return "";
+    } else {
+      value = value["$date"];
+    }
+    var date = getDate(value);
+    return date.getFullYear() + "-" + formatMonth((date.getMonth() + 1)) + "-" + formatMonth(date.getDate()) + " " + formatMonth(date.getHours()) + ":" + formatMonth(date.getMinutes()) + ":" + formatMonth(date.getSeconds());
+  },
+  getFileName: function(fileName, length) {
+    if (fileName.indexOf("<span class=\"search_word\">") > -1) {
+      var startIndex = fileName.indexOf("<span class=\"search_word\">"),
+        endIndex = fileName.indexOf("</span>"),
+        startPos = startIndex - length / 2,
+        endPos = endIndex + 7 + length / 2;
+      if (startPos < 0) endPos = endPos + Math.abs(startPos);
+      var newfilename = fileName.substring(startPos, endPos);
+      if (fileName.length > newfilename.length) return newfilename + "...";
+      return newfilename;
+    } else {
+      var len = 0;
+      for (var i = 0; i < fileName.length; i++) {
+        if (i == length) break;
+        getRegExp("^[\u4E00-\u9FA5]+$").test(fileName[i]) ? len += 1 : len += 2;
+      }
+      if (fileName.length > len) return fileName.substring(0, len) + "...";
+      return fileName.substring(0, len);
+    }
+  }
+}
+
+module.exports = {
+  convertFileSize: funs.convertFileSize,
+  parseBsonTime: funs.parseBsonTime,
+  getFileName: funs.getFileName,
+  getFileExtension: funs.getFileExtension
+}

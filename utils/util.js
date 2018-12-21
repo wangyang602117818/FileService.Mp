@@ -1,19 +1,48 @@
-const formatTime = date => {
-  const year = date.getFullYear()
-  const month = date.getMonth() + 1
-  const day = date.getDate()
-  const hour = date.getHours()
-  const minute = date.getMinutes()
-  const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+var keywords = [
+  "HandlerId",
+  "MachineName",
+  "FileName",
+  "StateDesc",
+  "Type",
+  "From",
+  "FileType",
+  "AppName",
+  "Content",
+  "Extension",
+  "Action",
+  "ApplicationName",
+  "UserName",
+  "Role",
+  "DepartmentName",
+  "DepartmentCode"
+];
+function trim(str) {
+  return str.replace(/(^\s*)|(\s*$)/g, "");
 }
-
-const formatNumber = n => {
-  n = n.toString()
-  return n[1] ? n : '0' + n
+function setKeyWord(result, filter) {
+  if (result.result && result.result.length > 0 && filter) {
+    for (var i = 0; i < result.result.length; i++) {
+      var doc = result.result[i];
+      for (var k = 0; k < keywords.length; k++) {
+        var keyword = keywords[k];
+        if (keyword.indexOf(".") > -1) {
+          var keywordArray = keyword.split(".");
+          if (doc[keywordArray[0]] && doc[keywordArray[0]][keywordArray[1]]) {
+            doc[keywordArray[0]][keywordArray[1]] = doc[keywordArray[0]][keywordArray[1]].replace(new RegExp("" + trim(filter) + "", "ig"), this.matchKeyWord);
+          }
+        } else {
+          if (doc[keyword] && typeof doc[keyword] == "string") {
+            doc[keyword] = doc[keyword].replace(new RegExp("" + trim(filter) + "", "ig"), matchKeyWord);
+          }
+        }
+      }
+    }
+  }
+}
+function matchKeyWord(word) {
+  return '<span class="search_word">' + word + '</span>';
 }
 
 module.exports = {
-  formatTime: formatTime
+  setKeyWord: setKeyWord
 }
