@@ -12,7 +12,6 @@ Page({
     orderField: "CreateTime",
     orderFieldType: "desc",
     count: 0,
-    showLoading: false,
     showOrder: false,
     showAdd: false,
     end: false,
@@ -23,7 +22,14 @@ Page({
   },
   showOrder(e) {
     this.setData({
-      showOrder: !this.data.showOrder
+      showOrder: !this.data.showOrder,
+      showAdd:false
+    })
+  },
+  showAdd(e){
+    this.setData({
+      showAdd: !this.data.showAdd,
+      showOrder:false
     })
   },
   changOrder(e) {
@@ -88,7 +94,7 @@ Page({
     }, true);
   },
   onReachBottom: function () {
-    if (!this.end) {
+    if (!this.data.end) {
       this.data.pageIndex = this.data.pageIndex + 1;
       this.getData(true);
     }

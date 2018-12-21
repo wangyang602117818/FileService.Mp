@@ -7,8 +7,8 @@
 .search_add {
   position: absolute;
   right: 0;
-  padding-left: 15rpx;
-  padding-right: 15rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
   height: 190rpx;
   margin-top: 125rpx;
   background-color: #fff;
@@ -18,7 +18,7 @@
   font-size: 25rpx;
 }
 
-.search_add:last-child {
+.search_add view:last-child {
   border-bottom: 0;
 }
 
