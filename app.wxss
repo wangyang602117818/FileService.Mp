@@ -20,9 +20,9 @@
 .search_icon {
   position: absolute;
   display: inline-block;
-  height: 30rpx;
-  width: 30rpx;
-  margin-top: 6rpx;
+  height: 35rpx;
+  width: 35rpx;
+  margin-top: 8rpx;
   margin-left: 6rpx;
 }
 
@@ -30,13 +30,13 @@
   border: 1px solid #ccc;
   border-radius: 16rpx;
   padding-left: 40rpx;
-  height: 40rpx;
-  min-height: 40rpx;
+  height: 45rpx;
+  min-height: 45rpx;
   font-size: 28rpx;
 }
 
 .search_input_wrap {
-  flex: 3;
+  flex: 2;
 }
 
 .search_input_funs {
@@ -49,7 +49,8 @@
 
 .search_input_funs text {
   display: inline-block;
-  font-size: 38rpx;
+  font-size: 45rpx;
+  font-weight: bold;
 }
 
 .data_container {

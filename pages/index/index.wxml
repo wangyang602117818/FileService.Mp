@@ -37,8 +37,7 @@
       </view>
       <view class="data_meta">
         <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}</view>
-        <view class="data_meta_subtitle">
-          {{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}
+        <view class="data_meta_subtitle">{{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}
         </view>
       </view>
       <view class="data_option" id="{{item.FileId.$oid}}">

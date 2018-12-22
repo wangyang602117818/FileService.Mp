@@ -12,6 +12,7 @@ Page({
     orderField: "CreateTime",
     orderFieldType: "desc",
     count: 0,
+    showLoading:false,
     showOrder: false,
     showAdd: false,
     end: false,
@@ -19,6 +20,7 @@ Page({
   },
   con_tap(e) {
     if (this.data.showOrder) this.setData({ showOrder: false });
+    if (this.data.showAdd) this.setData({ showAdd: false });
   },
   showOrder(e) {
     this.setData({
@@ -34,6 +36,7 @@ Page({
   },
   changOrder(e) {
     this.data.pageIndex = 1;
+    this.setData({end:false});
     var field = e.target.id;
     if (field) {
       this.setData({
@@ -49,6 +52,7 @@ Page({
   },
   search: function (e) {
     this.data.pageIndex = 1;
+    this.setData({ end: false });
     var value = e.detail.value;
     this.setData({
       filter: value
@@ -74,7 +78,6 @@ Page({
           this.data.result = data.result;
         }
         this.setData({
-          showLoading: true,
           result: this.data.result,
           count: data.count
         });
@@ -89,11 +92,13 @@ Page({
   },
   onPullDownRefresh: function () {
     this.data.pageIndex = 1;
+    this.setData({ end: false });
     this.getData(false, function () {
       wx.stopPullDownRefresh();
     }, true);
   },
   onReachBottom: function () {
+    this.setData({ showLoading: true});
     if (!this.data.end) {
       this.data.pageIndex = this.data.pageIndex + 1;
       this.getData(true);

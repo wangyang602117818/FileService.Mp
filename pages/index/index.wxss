@@ -9,7 +9,7 @@
   right: 0;
   padding-left: 20rpx;
   padding-right: 20rpx;
-  height: 190rpx;
+  height: 200rpx;
   margin-top: 125rpx;
   background-color: #fff;
   border: 1px solid #d3d3d4;
@@ -37,13 +37,15 @@
 .search_order {
   position: absolute;
   height: 180rpx;
-  right: 30rpx;
+  right: 55rpx;
   margin-top: 125rpx;
   background-color: #fff;
   border: 1px solid #d3d3d4;
   display: flex;
   flex-direction: column;
   font-size: 25rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
 }
 
 .search_order view {
@@ -52,8 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-left: 15rpx;
-  margin-right: 15rpx;
+  
 }
 
 .search_order view:last-child {
