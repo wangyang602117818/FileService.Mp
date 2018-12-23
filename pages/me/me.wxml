@@ -12,82 +12,82 @@
       </view>
       
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>公司</text>
      </view>
-     <view class='account_line_right'>
+     <view class='setting_line_right'>
         xx管理有限公司
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>部门</text>
      </view>
-     <view class='account_line_right'>
+     <view class='setting_line_right'>
         财务部, 人事部, 技术部
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>修改密码</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>***</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>***</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>文件回收站</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>10</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>10</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>日志</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>20</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>20</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>扩展名</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>36</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>36</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>应用程序</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>2</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>2</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>用户</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>30</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>30</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>
-   <view class='account_line'>
-     <view class='account_line_name'>
+   <view class='setting_line'>
+     <view class='setting_line_name'>
         <text>公司</text>
      </view>
-     <view class='account_line_right'>
-        <view class='account_line_data_numb'>10</view>
+     <view class='setting_line_right'>
+        <view class='setting_line_data'>10</view>
         <text class="iconfont icon-m-right"></text>
      </view>
    </view>

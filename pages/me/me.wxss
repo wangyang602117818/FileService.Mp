@@ -46,31 +46,6 @@
   font-size: 40rpx;
 }
 
-.account_line {
-  display: flex;
-  height: 100rpx;
-  width: 100%;
-  align-items: center;
-  font-size: 25rpx;
-  border-bottom: 1px solid #e3e4e4;
-}
-
-.account_line .account_line_name {
-  flex: 1;
-  display: flex;
-}
-
-.account_line .account_line_right {
-  font-size: 23rpx;
-  text-align: center;
-  display: flex;
-  align-items: center;
-}
-
-.account_line .account_line_right .account_line_data_numb {
-  display: inline-block;
-  margin-right: 20rpx;
-}
 .login_out{
   margin-top: 50rpx;
   height: 80rpx;
@@ -87,6 +62,7 @@
   color: #fff;
   border:0;
   font-size: 30rpx;
+  margin-bottom: 30rpx;
 }
 
 .button_login_out_hover {

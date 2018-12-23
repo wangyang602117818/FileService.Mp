@@ -10,7 +10,7 @@
   padding-left: 20rpx;
   padding-right: 20rpx;
   height: 200rpx;
-  margin-top: 125rpx;
+  margin-top: 135rpx;
   background-color: #fff;
   border: 1px solid #d3d3d4;
   display: flex;
@@ -36,9 +36,9 @@
 
 .search_order {
   position: absolute;
-  height: 180rpx;
+  height: 200rpx;
   right: 55rpx;
-  margin-top: 125rpx;
+  margin-top: 135rpx;
   background-color: #fff;
   border: 1px solid #d3d3d4;
   display: flex;

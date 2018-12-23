@@ -1,9 +1,16 @@
 {
   "pages": [
+    "pages/addimage/addimage",
+    "pages/addconvert/addconvert",
     "pages/index/index",
+    
+    
+    
+    
+    
     "pages/me/me",
-    "pages/task/task",
-    "pages/addimage/addimage"
+    "pages/task/task"
+    
   ],
   "tabBar": {
     "color": "#5f5d5d",

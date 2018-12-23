@@ -1,3 +1,53 @@
 <view class="container">
-
+  <view class='image_list'>
+    <view class='image_item'>
+      <image src='../../images/1_162252_2.jpg'></image>
+    </view>
+    <view class='image_item'>
+      <text class="iconfont icon-m-plus"></text>
+    </view>
+  </view>
+  <view class='convert_wrap'>
+    <navigator url="/pages/addconvert/addconvert">
+      <view class='setting_line'>
+        <view class='setting_line_name bold'>转换</view>
+        <view class='setting_line_data'>
+          <text class="iconfont icon-m-right"></text>
+        </view>
+      </view>
+    </navigator>
+    <view class='setting_line'>
+      <view class='setting_line_name'>mobile</view>
+      <view class='setting_line_data'>
+        width:200px
+      </view>
+    </view>
+    <view class='setting_line'>
+      <view class='setting_line_name'>pad</view>
+      <view class='setting_line_data'>
+        width:200px
+      </view>
+    </view>
+  </view>
+  <view class='access_wrap'>
+    <view class='setting_line'>
+      <view class='setting_line_name bold'>权限</view>
+      <view class='setting_line_data'>
+        <text class="iconfont icon-m-right"></text>
+      </view>
+    </view>
+    <view class='setting_line'>
+      <view class='setting_line_name'>Company</view>
+      <view class='setting_line_data'>
+        信息技术部， 信息技术部
+      </view>
+    </view>
+    <view class='setting_line'>
+      <view class='setting_line_name'>pad</view>
+      <view class='setting_line_data'>
+        信息技术部
+      </view>
+    </view>
+  </view>
+  <button class="buttom_primary" hover-class='buttom_primary_hover' bindtap='login'> 添 加 </button>
 </view>

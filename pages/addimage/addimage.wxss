@@ -1,0 +1,30 @@
+.image_list {
+  width: 100%;
+  float: left;
+}
+
+.image_item {
+  display: inline-flex;
+  height: 200rpx;
+  width: 210rpx;
+  margin-right: 10rpx;
+  margin-top: 10rpx;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+}
+
+.icon-m-plus {
+  font-size: 80rpx;
+}
+
+.convert_wrap, .access_wrap {
+  width: 100%;
+  margin-top: 40rpx;
+}
+
+
+
+

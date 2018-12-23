@@ -22,6 +22,9 @@ Page({
     if (this.data.showOrder) this.setData({ showOrder: false });
     if (this.data.showAdd) this.setData({ showAdd: false });
   },
+  addimage(e){
+
+  },
   showOrder(e) {
     this.setData({
       showOrder: !this.data.showOrder,
