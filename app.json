@@ -1,12 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/login/login",
     "pages/addimage/addimage",
     "pages/addconvert/addconvert",
-    "pages/index/index",
-    
-    
-    
-    
     
     "pages/me/me",
     "pages/task/task"

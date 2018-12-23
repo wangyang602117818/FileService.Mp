@@ -3,7 +3,7 @@
 }
 
 .logo {
-  height: 70rpx;
+  height: 80rpx;
   width: 70%;
   margin-top: 60rpx;
   margin-left: 0rpx;
@@ -12,7 +12,7 @@
 .form_line {
   width: 90%;
   display: flex;
-  margin-top: 60rpx;
+  margin-top: 80rpx;
 }
 
 .form_line input {

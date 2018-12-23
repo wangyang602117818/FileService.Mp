@@ -1,6 +1,6 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -10,7 +10,10 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        //console.log(res);
+        console.log(res);
+        this.get(this.baseUrl + "home/weChatLogin", { code: res.code}, function(result) {
+          console.log(result);
+        });
       }
     })
     // 获取用户信息
@@ -34,34 +37,42 @@ App({
       }
     })
   },
-  post: function (url, data, success, loading) {
-    if (loading) wx.showLoading({ title: "loading" });
+  post: function(url, data, success, loading) {
+    if (loading) wx.showLoading({
+      title: "loading"
+    });
     wx.request({
       url: url,
       method: "post",
       data: data,
       header: {
-        'Authorization': this.token  // 默认值
+        'Authorization': this.token // 默认值
       },
       success: res => {
         success(res.data);
       },
-      complete: () => { if (loading) wx.hideLoading(); }
+      complete: () => {
+        if (loading) wx.hideLoading();
+      }
     })
   },
-  get: function (url, data, success, loading) {
-    if (loading) wx.showLoading({ title: "loading" });
+  get: function(url, data, success, loading) {
+    if (loading) wx.showLoading({
+      title: "loading"
+    });
     wx.request({
       url: url,
       method: "get",
       data: data,
       header: {
-        'Authorization': this.token  // 默认值
+        'Authorization': this.token // 默认值
       },
       success: res => {
         success(res.data);
       },
-      complete: () => { if (loading) wx.hideLoading(); }
+      complete: () => {
+        if (loading) wx.hideLoading();
+      }
     })
   },
   baseUrl: "http://192.168.1.103:5000/api/",
