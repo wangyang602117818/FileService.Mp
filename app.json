@@ -15,20 +15,20 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "iconPath": "./images/home.png",
-        "selectedIconPath": "./images/home-sel.png",
+        "iconPath": "/images/home.png",
+        "selectedIconPath": "/images/home-sel.png",
         "text": "首页"
       },
       {
         "pagePath": "pages/task/task",
-        "iconPath": "./images/task.png",
-        "selectedIconPath": "./images/task-sel.png",
+        "iconPath": "/images/task.png",
+        "selectedIconPath": "/images/task-sel.png",
         "text": "任务"
       },
       {
         "pagePath": "pages/me/me",
-        "iconPath": "./images/me.png",
-        "selectedIconPath": "./images/me-sel.png",
+        "iconPath": "/images/me.png",
+        "selectedIconPath": "/images/me-sel.png",
         "text": "我的"
       }
     ]

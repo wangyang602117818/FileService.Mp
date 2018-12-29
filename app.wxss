@@ -1,5 +1,23 @@
 /**app.wxss**/
 
+@font-face {
+  font-family: 'iconfont'; /* project id 936297 */
+  src: url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.eot');
+  src: url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.eot?#iefix') format('embedded-opentype'),
+         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.woff') format('woff'),
+         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.svg#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 35rpx;
+  font-style: normal;
+  color: #5f5d5d;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .container {
   width: 90%;
   display: flex;
@@ -130,6 +148,10 @@
   color: red;
 }
 
+.main_color {
+  color: #eb8c00;
+}
+
 .buttom_primary {
   width: 100%;
   height: 90rpx;
@@ -144,9 +166,11 @@
 .buttom_primary_hover {
   background-color: #efa333;
 }
-.bold{
+
+.bold {
   font-weight: bold;
 }
+
 .setting_line {
   display: flex;
   height: 100rpx;
@@ -171,24 +195,6 @@
 .setting_line .setting_line_right .setting_line_data {
   display: inline-block;
   margin-right: 20rpx;
-}
-
-@font-face {
-  font-family: 'iconfont'; /* project id 936297 */
-  src: url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.eot');
-  src: url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.eot?#iefix') format('embedded-opentype'),
-         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.woff') format('woff'),
-         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.ttf') format('truetype'),
-         url('//at.alicdn.com/t/font_936297_3gpgu8l1xmh.svg#iconfont') format('svg');
-}
-
-.iconfont {
-  font-family: "iconfont" !important;
-  font-size: 35rpx;
-  font-style: normal;
-  color: #5f5d5d;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-m-plus:before {

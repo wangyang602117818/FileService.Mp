@@ -33,7 +33,7 @@
       </view>
     </view>
   </view>
-  <view class="data_container">
+  <view class="data_container" style="margin-bottom:{{showBottomFun==true?'95rpx':'0rpx'}}">
     <view class="data_line" wx:for="{{result}}" wx:key="unique" id="{{item.FileId.$oid}}">
       <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)+'?auth_token='+token}})">
       </view>
@@ -42,13 +42,28 @@
         <view class="data_meta_subtitle">{{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}
         </view>
       </view>
-      <view class="data_option" id="{{item.FileId.$oid}}">
-        <text class="iconfont icon-m-selected"></text>
+      <view class="data_option" id="{{item._id.$oid}}" catchtap='selectItem'>
+        <text class="iconfont icon-m-selected main_color" id="{{item._id.$oid}}" wx:if="{{item.selected}}"></text>
+        <text class="iconfont icon-m-selected" id="{{item._id.$oid}}" wx:if="{{!item.selected}}"></text>
       </view>
     </view>
     <view class='loading' wx:if="{{showLoading==true&&end==false}}">
       <image src='../../images/loading.gif' />
     </view>
     <view class='data_end' wx:if="{{showLoading==true&&end==true}}">--- end ---</view>
+  </view>
+  <view class='bottom_funs' style="display:{{showBottomFun==true?'flex':'none'}}">
+    <view class='back_wrap' catchtap='funBack'>
+      <image src='../../images/back.png' />
+      <text>取消</text>
+    </view>
+    <view class='download_wrap'>
+      <image src='../../images/download.png' />
+      <text>下载</text>
+    </view>
+    <view class='remove_wrap'>
+      <image src='../../images/remove.png' />
+      <text>删除</text>
+    </view>
   </view>
 </view>

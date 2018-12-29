@@ -1,9 +1,5 @@
 /**index.wxss**/
 
-.container {
-  width: 90%;
-}
-
 .search_add {
   position: absolute;
   right: 0;
@@ -54,7 +50,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  
 }
 
 .search_order view:last-child {
@@ -63,4 +58,32 @@
 
 .search_order .current {
   color: #f60;
+}
+
+.bottom_funs {
+  border-top: 1px solid #d3d3d3;
+  position: fixed;
+  bottom: 0;
+  height: 95rpx;
+  background-color: #f7f7fa;
+  display: flex;
+  width: 100%;
+}
+
+.bottom_funs view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.bottom_funs view text {
+  font-size: 22rpx;
+  color: #5f5d5d;
+}
+
+.bottom_funs view image {
+  width: 45rpx;
+  height: 45rpx;
 }
