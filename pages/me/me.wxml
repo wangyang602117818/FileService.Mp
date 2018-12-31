@@ -92,6 +92,6 @@
      </view>
    </view>
    <view class='login_out'>
-     <button class="button_login_out" hover-class='button_login_out_hover' bindtap='login_out'> 退出登录 </button>
+     <button class="button_login_out" hover-class='button_login_out_hover' catchtap='logOut'> 退出登录 </button>
    </view>
 </view>

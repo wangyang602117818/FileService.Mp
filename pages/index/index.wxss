@@ -63,7 +63,7 @@
 .bottom_funs {
   border-top: 1px solid #d3d3d3;
   position: fixed;
-  bottom: 0;
+  bottom: 0px;
   height: 95rpx;
   background-color: #f7f7fa;
   display: flex;
@@ -81,6 +81,7 @@
 .bottom_funs view text {
   font-size: 22rpx;
   color: #5f5d5d;
+  margin-top:4rpx;
 }
 
 .bottom_funs view image {

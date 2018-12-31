@@ -19,6 +19,13 @@ var keywords = [
 function trim(str) {
   return str.replace(/(^\s*)|(\s*$)/g, "");
 }
+function toast(text){
+  wx.showToast({
+    title: text,
+    icon: "none"
+  });
+  return false;
+}
 function setKeyWord(result, filter) {
   if (result.result && result.result.length > 0 && filter) {
     for (var i = 0; i < result.result.length; i++) {
@@ -44,5 +51,7 @@ function matchKeyWord(word) {
 }
 
 module.exports = {
-  setKeyWord: setKeyWord
+  setKeyWord: setKeyWord,
+  trim: trim,
+  toast: toast
 }

@@ -34,11 +34,11 @@
     </view>
   </view>
   <view class="data_container" style="margin-bottom:{{showBottomFun==true?'95rpx':'0rpx'}}">
-    <view class="data_line" wx:for="{{result}}" wx:key="unique" id="{{item.FileId.$oid}}">
-      <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)+'?auth_token='+token}})">
+    <view class="data_line" wx:for="{{result}}" wx:key="unique" >
+      <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"  catchtap='previewFile' id="{{item._id.$oid}}">
       </view>
       <view class="data_meta">
-        <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}</view>
+        <view class="data_meta_title" >{{funs.getFileName(item.FileName,10)}}</view>
         <view class="data_meta_subtitle">{{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}
         </view>
       </view>
@@ -57,9 +57,9 @@
       <image src='../../images/back.png' />
       <text>取消</text>
     </view>
-    <view class='download_wrap'>
+    <view class='download_wrap' catchtap='funDowload'>
       <image src='../../images/download.png' />
-      <text>下载</text>
+      <text >下载</text>
     </view>
     <view class='remove_wrap'>
       <image src='../../images/remove.png' />

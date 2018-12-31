@@ -5,7 +5,6 @@ const util = require("../../utils/util.js")
 Page({
   data: {
     getFileIcon: app.baseUrl + "files/getfileicon",
-    token: app.token,
     pageIndex: 1,
     pageSize: 15,
     filter: "",
@@ -37,9 +36,31 @@ Page({
       showBottomFun: false,
       selectedIds: []
     }, function() {
-      wx.showTabBar({
-        animation: true
-      });
+      wx.showTabBar({});
+    })
+  },
+  previewFile(e){
+    var id = e.target.id;
+    var url = app.baseUrl + "download/get/" + id + "?access_token=" + app.token;
+    // wx.previewImage({
+
+    //   urls:[]
+    // });
+    // wx.openDocument({
+    //   filePath: app.baseUrl+"download/get/"+id+"?access_token="+app.token
+    // })
+    
+    wx.downloadFile({
+      url: url,
+      success(res){
+        var filePath = res.tempFilePath;
+        wx.openDocument({
+          filePath,
+          success(res) {
+            console.log('打开文档成功')
+          }
+        })
+      }
     })
   },
   selectItem(e) {
@@ -58,7 +79,6 @@ Page({
     }
     if (selectedIds.length > 0) {
       wx.hideTabBar({
-        animation: true,
         success: function() {
           this.setData({
             showBottomFun: true,
@@ -71,9 +91,7 @@ Page({
         showBottomFun: false,
         selectedIds: selectedIds
       }, function() {
-        wx.showTabBar({
-          animation: true
-        });
+        wx.showTabBar({});
       });
     }
   },
@@ -104,7 +122,6 @@ Page({
     this.getData(false, null, true);
   },
   onLoad: function() {
-    // wx.hideTabBar({});
     this.data.pageIndex = 1;
     this.getData(false, null, true);
   },
@@ -142,10 +159,7 @@ Page({
           count: data.count
         });
       } else {
-        wx.showToast({
-          title: data.message,
-          icon: "none"
-        });
+        util.toast(data.message);
       }
       if (callback) callback();
     }.bind(this), loading)
@@ -153,8 +167,9 @@ Page({
   onPullDownRefresh: function() {
     this.data.pageIndex = 1;
     this.setData({
-      end: false
-    });
+      end: false,
+      showBottomFun:false
+    }, function () { wx.showTabBar({});});
     this.getData(false, function() {
       wx.stopPullDownRefresh();
     }, true);

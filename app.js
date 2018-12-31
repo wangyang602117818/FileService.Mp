@@ -1,21 +1,32 @@
 //app.js
+const util = require("/utils/util.js")
 App({
+  onShow() {
+    // 登录
+    wx.login({
+      success: res => {
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        this.post(this.baseUrl + "home/weChatLogin", {
+          authCode: this.authCode,
+          apiType: this.apiType,
+          code: res.code
+        }, function(result) {
+          if (result.code == 0) {
+            this.token = result.result;
+            wx.switchTab({
+              url: '/pages/index/index'
+            })
+          }
+        }.bind(this), true);
+      }
+    })
+  },
   onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res);
-        this.get(this.baseUrl + "home/weChatLogin", { code: res.code}, function(result) {
-          console.log(result);
-        });
-      }
-    })
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -39,14 +50,15 @@ App({
   },
   post: function(url, data, success, loading) {
     if (loading) wx.showLoading({
-      title: "loading"
+      title: "loading",
+      mask: true
     });
     wx.request({
       url: url,
       method: "post",
       data: data,
       header: {
-        'Authorization': this.token // 默认值
+        'Authorization': this.token
       },
       success: res => {
         success(res.data);
@@ -58,14 +70,15 @@ App({
   },
   get: function(url, data, success, loading) {
     if (loading) wx.showLoading({
-      title: "loading"
+      title: "loading",
+      mask: true
     });
     wx.request({
       url: url,
       method: "get",
       data: data,
       header: {
-        'Authorization': this.token // 默认值
+        'Authorization': this.token
       },
       success: res => {
         success(res.data);
@@ -75,10 +88,26 @@ App({
       }
     })
   },
-  baseUrl: "http://127.0.0.1:5000/api/",
-  appName:"MiniProgram",
-  apiType:"none",
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoid2FuZyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6ImFkbWluIiwiZXhwIjoxNTQ2MDk5MTk5LCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xLyIsImF1ZCI6Imh0dHA6Ly8xMjcuMC4wLjEvIn0.-dzX2DwRXm4PyTlvQ5UQdWRvigSmnxk9IKmzNTl-0Rg",
+  downloadFile: function (fileId) {
+    wx.downloadFile({
+      url: this.baseUrl + "download/get/" + fileId,
+      header: {
+        'Authorization': this.token
+      },
+      success(result){
+        wx.saveFile({
+          tempFilePath: result.tempFilePath,
+          success(res){
+            console.log(res);
+          }
+        })
+      },
+    })
+  },
+  baseUrl: "http://192.168.1.103:5000/api/",
+  authCode: "1936aef6d2ba",
+  apiType: "none",
+  token: "",
   funs: require('./utils/util.js'),
   globalData: {
     userInfo: null,
