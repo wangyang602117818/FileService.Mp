@@ -13,6 +13,7 @@ App({
         }, function(result) {
           if (result.code == 0) {
             this.token = result.result;
+            this.getExtensions();
             wx.switchTab({
               url: '/pages/index/index'
             })
@@ -26,7 +27,6 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -47,6 +47,11 @@ App({
         }
       }
     })
+  },
+  getExtensions() {
+    this.get(this.baseUrl + "files/getextensions", {}, function(result) {
+      if (result.code == 0) this.extensions = result.result;
+    }.bind(this));
   },
   post: function(url, data, success, loading) {
     if (loading) wx.showLoading({
@@ -88,26 +93,11 @@ App({
       }
     })
   },
-  downloadFile: function (fileId) {
-    wx.downloadFile({
-      url: this.baseUrl + "download/get/" + fileId,
-      header: {
-        'Authorization': this.token
-      },
-      success(result){
-        wx.saveFile({
-          tempFilePath: result.tempFilePath,
-          success(res){
-            console.log(res);
-          }
-        })
-      },
-    })
-  },
   baseUrl: "http://192.168.1.103:5000/api/",
   authCode: "1936aef6d2ba",
   apiType: "none",
   token: "",
+  extensions: [],
   funs: require('./utils/util.js'),
   globalData: {
     userInfo: null,

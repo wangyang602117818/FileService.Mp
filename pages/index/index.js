@@ -40,18 +40,15 @@ Page({
     })
   },
   previewFile(e){
-    var id = e.target.id;
-    var url = app.baseUrl + "download/get/" + id + "?access_token=" + app.token;
-    // wx.previewImage({
-
-    //   urls:[]
-    // });
-    // wx.openDocument({
-    //   filePath: app.baseUrl+"download/get/"+id+"?access_token="+app.token
-    // })
-    
+    var id = e.currentTarget.dataset.id;
+    var filename = e.currentTarget.dataset.filename;
+    var url = app.baseUrl + "download/get/" + id;
+    console.log(app.extensions);
     wx.downloadFile({
       url: url,
+      header: {
+        'Authorization': app.token
+      },
       success(res){
         var filePath = res.tempFilePath;
         wx.openDocument({
@@ -64,7 +61,7 @@ Page({
     })
   },
   selectItem(e) {
-    var id = e.target.id;
+    var id = e.currentTarget.dataset.id;
     for (var i = 0; i < this.data.result.length; i++) {
       if (this.data.result[i]._id.$oid == id) {
         this.data.result[i].selected = !this.data.result[i].selected;
