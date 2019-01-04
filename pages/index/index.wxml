@@ -18,10 +18,8 @@
     </view>
     <view class='search_add' style="display:{{showAdd==true?'flex':'none'}}">
       <view>
-        <navigator url="/pages/addimage/addimage">
-          <text class="iconfont icon-m-image"></text>
-          <text class='funs_text'>添加图片</text>
-        </navigator>
+        <text class="iconfont icon-m-image"></text>
+        <text class='funs_text'>添加图片</text>
       </view>
       <view>
         <text class="iconfont icon-m-video"></text>
@@ -35,7 +33,7 @@
   </view>
   <view class="data_container" style="margin-bottom:{{showBottomFun==true?'95rpx':'0rpx'}}">
     <view class="data_line" wx:for="{{result}}" wx:key="unique" catchtap='previewFile' data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}">
-      <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})" >
+      <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})">
       </view>
       <view class="data_meta">
         <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}</view>

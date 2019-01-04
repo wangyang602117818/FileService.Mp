@@ -1,12 +1,12 @@
 /**app.wxss**/
 
 @font-face {
-  font-family: 'iconfont';  /* project id 936297 */
+  font-family: 'iconfont'; /* project id 936297 */
   src: url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.eot');
   src: url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.woff') format('woff'),
-  url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.svg#iconfont') format('svg');
+         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.woff') format('woff'),
+         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -16,6 +16,10 @@
   color: #5f5d5d;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+navigator {
+  display: inline;
 }
 
 .container {
