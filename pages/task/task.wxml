@@ -1,41 +1,38 @@
+<wxs module="funs" src="../../utils/funs.wxs"></wxs>
 <view class="container">
   <view class='search_container'>
     <view class='search_input_wrap'>
       <image src='../../images/search.png' class='search_icon' />
-      <input type="text" class='search_input' confirm-type="search" />
+      <input type="text" class='search_input' confirm-type="search" bindconfirm="search" />
     </view>
-    <view class='search_input_funs'>
+    <view class='search_input_funs' bindtap='deleteAllCacheFile'>
       <text class="iconfont icon-m-empty"></text>
     </view>
   </view>
   <view class="data_container">
-    <view class="data_line">
-      <view class='data_line_image_wrap' style="background-image: url('../../images/1_162252_2.jpg')"></view>
+    <view class="data_line" wx:for="{{result}}" wx:key="unique" data-id="{{item._id.$oid}}">
+      <view class="data_signal">
+        <text class="task_state task_wait" wx:if="{{item.State == 0}}"></text>
+        <text class="task_state task_processing" wx:if="{{item.State == 1}}"></text>
+        <text class="task_state task_completed" wx:if="{{item.State == 2}}"></text>
+        <text class="task_state task_updated" wx:if="{{item.State == 4}}"></text>
+        <text class="task_state task_error" wx:if="{{item.State == -1 || item.State == -100}}"></text>
+      </view>
       <view class="data_meta">
-        <view class="data_meta_title">services broker.sql
-          <text class="iconfont icon-m-c"></text>
+        <view class="data_meta_title">{{funs.getFileName(item.FileName,12)}}
+          <text class="iconfont icon-m-c" wx:if="{{item.FileExists}}"></text>
         </view>
         <view class="data_meta_subtitle">
-          h01 | 2 | 2018-11-09 09:43:53
+         {{item.HandlerId}} | {{item.ProcessCount}} | {{funs.parseBsonTime(item.CompletedTime)}}
         </view>
       </view>
-      <view class="data_option">
-        <text class="task_state task_wait"></text>
+      <view class="data_option" catchtap='redo' data-id="{{item._id.$oid}}" data-type="{{item.Type}}">
+        <text class="iconfont icon-m-redo" wx:if="{{item.State == 2 || item.State == 4 || item.State == -1}}"></text>
       </view>
     </view>
-    <view class="data_line">
-     <view class='data_line_image_wrap' style="background-image: url('../../images/1_162252_2.jpg')"></view>
-      <view class="data_meta">
-        <view class="data_meta_title">services broker.sql
-          <text class="iconfont icon-m-c"></text>
-        </view>
-        <view class="data_meta_subtitle">
-          h01 | 2 | 2018-11-09 09:43:53
-        </view>
-      </view>
-      <view class="data_option">
-        <text class="task_state task_completed"></text>
-      </view>
+    <view class='loading' wx:if="{{showLoading==true&&end==false}}">
+      <image src='../../images/loading.gif' />
     </view>
+    <view class='data_end' wx:if="{{showLoading==true&&end==true}}">--- end ---</view>
   </view>
 </view>

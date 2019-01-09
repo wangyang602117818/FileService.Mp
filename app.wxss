@@ -2,11 +2,12 @@
 
 @font-face {
   font-family: 'iconfont'; /* project id 936297 */
-  src: url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.eot');
-  src: url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.eot?#iefix') format('embedded-opentype'),
-         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.woff') format('woff'),
-         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.ttf') format('truetype'),
-         url('//at.alicdn.com/t/font_936297_gvl8egrtjv6.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_936297_mq32rmb37m8.eot');
+  src: url('//at.alicdn.com/t/font_936297_mq32rmb37m8.eot?#iefix') format('embedded-opentype'),
+         url('//at.alicdn.com/t/font_936297_mq32rmb37m8.woff2') format('woff2'),
+         url('//at.alicdn.com/t/font_936297_mq32rmb37m8.woff') format('woff'),
+         url('//at.alicdn.com/t/font_936297_mq32rmb37m8.ttf') format('truetype'),
+         url('//at.alicdn.com/t/font_936297_mq32rmb37m8.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -199,6 +200,10 @@ navigator {
 .setting_line .setting_line_right .setting_line_data {
   display: inline-block;
   margin-right: 20rpx;
+}
+
+.icon-m-redo:before {
+  content: "\e616";
 }
 
 .icon-m-plus:before {

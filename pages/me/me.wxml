@@ -4,10 +4,10 @@
       <text class="iconfont icon-m-account"></text>
       <view class='account_data_wrap'>
         <view class='account_data_name'>
-        Yang X Wang
+        {{userName}}
         </view>
         <view class='account_data_role'>
-        admin | 2018-12-01 12:00:00
+        {{role}} | {{createTime}}
         </view>
       </view>
       

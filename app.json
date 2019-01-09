@@ -1,13 +1,15 @@
 {
   "pages": [
+    "pages/me/me",
+    "pages/task/task",
     "pages/login/login",
     "pages/index/index",
     
     "pages/addimage/addimage",
-    "pages/addconvert/addconvert",
+    "pages/addconvert/addconvert"
     
-    "pages/me/me",
-    "pages/task/task"
+    
+    
     
   ],
   "tabBar": {

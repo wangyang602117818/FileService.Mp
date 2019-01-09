@@ -43,7 +43,6 @@ Page({
     var id = e.currentTarget.dataset.id;
     var filename = e.currentTarget.dataset.filename;
     var url = app.baseUrl + "download/get/" + id;
-    console.log(app.extensions);
     wx.downloadFile({
       url: url,
       header: {

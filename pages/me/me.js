@@ -2,12 +2,10 @@
 const app = getApp()
 const util = require("../../utils/util.js")
 Page({
-
-  /**
-   * Page initial data
-   */
   data: {
-
+    userName:"",
+    role:"",
+    createTime:""
   },
   logOut: e => {
     app.get(app.baseUrl + "home/logout", {}, function(result) {
@@ -24,7 +22,14 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function(options) {
-
+    var res = app.token.match(/\.(\w+)\./i)[1];
+    var base64 = util.base64Decode(res);
+    console.log(base64);
+    this.setData({
+      userName: base64.match(/\"http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/name":"(\w+)"/i)[1],
+      role: base64.match(/\"http:\/\/schemas.microsoft.com\/ws\/2008\/06\/identity\/claims\/role":"(\w+)"/i)[1],
+      createTime: base64.match(/"CreateTime":"(.+?)"/i)[1],
+    })
   },
 
   /**

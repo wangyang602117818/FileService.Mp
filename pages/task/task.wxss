@@ -1,3 +1,14 @@
+.data_signal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30rpx;
+}
+
+.data_line {
+  height: 90rpx;
+}
+
 .task_state {
   display: inline-block;
   width: 16rpx;
@@ -24,4 +35,3 @@
 .task_error {
   background-color: red;
 }
-
