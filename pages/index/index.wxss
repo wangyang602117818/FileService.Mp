@@ -93,6 +93,7 @@
 }
 
 .data_thumb_item {
+  position: relative;
   background-color: #f0f0f0;
   margin-top: 20rpx;
   margin-right: 20rpx;
@@ -116,5 +117,19 @@
   line-height: 25rpx;
   text-align: center;
   align-items: center;
+}
+
+.data_thumb_item .icon-m-detail {
+  display: inline-flex;
+  font-size: 28rpx;
+  height: 25rpx;
+  width:35rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color:#5f5d5d;
+  background-color: #e3e3e3;
+  align-items: center;
+  justify-content: center;
   
 }

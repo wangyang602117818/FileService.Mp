@@ -4,7 +4,7 @@ const util = require("../../utils/util.js")
 Page({
   data: {
     pageIndex: 1,
-    pageSize: 15,
+    pageSize: 20,
     filter: "",
     count: 0,
     showLoading: false,

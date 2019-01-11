@@ -7,7 +7,7 @@ Page({
     getFileIconMobile: app.baseUrl + "files/getfileiconmobile",
     getFileIcon: app.baseUrl + "files/getfileicon",
     pageIndex: 1,
-    pageSize: 15,
+    pageSize: 20,
     filter: "",
     orderField: "CreateTime",
     orderFieldType: "desc",

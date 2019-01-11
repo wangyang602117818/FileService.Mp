@@ -46,9 +46,8 @@
     <view class='data_thumb_container' wx:if="{{listType=='thumb'}}">
       <view class='data_thumb_item' wx:for="{{result}}" wx:key="unique">
         <view class='data_thumb_image' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
-        <view class='data_thumb_meta'>
-        {{funs.getFileName(item.FileName,5)}}
-        </view>
+        <view class='data_thumb_meta'>{{funs.getFileName(item.FileName,5)}}</view>
+        <text class="iconfont icon-m-detail"></text>
       </view>
     </view>
     <view class='loading' wx:if="{{showLoading==true&&end==false}}">
