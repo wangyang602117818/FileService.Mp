@@ -4,6 +4,7 @@ const app = getApp()
 const util = require("../../utils/util.js")
 Page({
   data: {
+    getFileIconMobile: app.baseUrl + "files/getfileiconmobile",
     getFileIcon: app.baseUrl + "files/getfileicon",
     pageIndex: 1,
     pageSize: 15,
@@ -16,6 +17,7 @@ Page({
     showAdd: false,
     showBottomFun: false,
     end: false,
+    listType: "thumb", //thumb
     selectedIds: [],
     result: []
   },
@@ -39,7 +41,7 @@ Page({
       wx.showTabBar({});
     })
   },
-  previewFile(e){
+  previewFile(e) {
     var id = e.currentTarget.dataset.id;
     var filename = e.currentTarget.dataset.filename;
     var url = app.baseUrl + "download/get/" + id;
@@ -48,7 +50,7 @@ Page({
       header: {
         'Authorization': app.token
       },
-      success(res){
+      success(res) {
         var filePath = res.tempFilePath;
         wx.openDocument({
           filePath,
@@ -164,8 +166,10 @@ Page({
     this.data.pageIndex = 1;
     this.setData({
       end: false,
-      showBottomFun:false
-    }, function () { wx.showTabBar({});});
+      showBottomFun: false
+    }, function() {
+      wx.showTabBar({});
+    });
     this.getData(false, function() {
       wx.stopPullDownRefresh();
     }, true);

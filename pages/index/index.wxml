@@ -32,9 +32,8 @@
     </view>
   </view>
   <view class="data_container" style="margin-bottom:{{showBottomFun==true?'95rpx':'0rpx'}}">
-    <view class="data_line" wx:for="{{result}}" wx:key="unique" catchtap='previewFile' data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}">
-      <view class='data_line_image_wrap' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})">
-      </view>
+    <view class="data_line" wx:if="{{listType=='list'}}" wx:for="{{result}}" wx:key="unique" catchtap='previewFile' data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}">
+      <view class='data_line_image_wrap' style="background-image: url({{getFileIconMobile+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
       <view class="data_meta">
         <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}</view>
         <view class="data_meta_subtitle">{{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}</view>
@@ -42,6 +41,14 @@
       <view class="data_option" data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}" catchtap='selectItem'>
         <text class="iconfont icon-m-selected main_color" wx:if="{{item.selected}}"></text>
         <text class="iconfont icon-m-selected" wx:if="{{!item.selected}}"></text>
+      </view>
+    </view>
+    <view class='data_thumb_container' wx:if="{{listType=='thumb'}}">
+      <view class='data_thumb_item' wx:for="{{result}}" wx:key="unique">
+        <view class='data_thumb_image' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
+        <view class='data_thumb_meta'>
+        {{funs.getFileName(item.FileName,5)}}
+        </view>
       </view>
     </view>
     <view class='loading' wx:if="{{showLoading==true&&end==false}}">

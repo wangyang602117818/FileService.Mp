@@ -81,10 +81,40 @@
 .bottom_funs view text {
   font-size: 22rpx;
   color: #5f5d5d;
-  margin-top:4rpx;
+  margin-top: 4rpx;
 }
 
 .bottom_funs view image {
   width: 45rpx;
   height: 45rpx;
+}
+
+.data_thumb_container {
+}
+
+.data_thumb_item {
+  background-color: #f0f0f0;
+  margin-top: 20rpx;
+  margin-right: 20rpx;
+  float: left;
+  height: 220rpx;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.data_thumb_item .data_thumb_image {
+  height: 170rpx;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.data_thumb_item .data_thumb_meta {
+  margin-top: 10rpx;
+  font-size: 25rpx;
+  line-height: 25rpx;
+  text-align: center;
+  align-items: center;
+  
 }

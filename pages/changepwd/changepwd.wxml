@@ -1,0 +1,25 @@
+<view class='container'>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>{{userName}}</text>
+    </view>
+    <view class='setting_line_right'>{{role}}</view>
+  </view>
+  <view class='input_line'>
+    <view class='input_line_title'>
+      <text>新密码</text>
+    </view>
+    <view class='input_line_value'>
+      <input type='text' name="pwd" password bindinput="newPassword"/>
+    </view>
+  </view>
+  <view class='input_line'>
+    <view class='input_line_title'>
+      <text>确认新密码</text>
+    </view>
+    <view class='input_line_value'>
+      <input type='text' name="pwd2" password bindinput="newPassword2"/>
+    </view>
+  </view>
+  <button class="buttom_primary" hover-class='buttom_primary_hover' bindtap='changepwd'> 确 定 </button>
+</view>

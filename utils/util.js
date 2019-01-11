@@ -20,6 +20,18 @@ var keywords = [
 function trim(str) {
   return str.replace(/(^\s*)|(\s*$)/g, "");
 }
+function formatMonth(month) {
+  return month.toString().length == 1 ? "0" + month : month;
+};
+function parseBsonTime(value) {
+  if (!value) {
+    return "";
+  } else {
+    value = value["$date"];
+  }
+  var date = new Date(value);
+  return date.getFullYear() + "-" + formatMonth((date.getMonth() + 1)) + "-" + formatMonth(date.getDate()) + " " + formatMonth(date.getHours()) + ":" + formatMonth(date.getMinutes()) + ":" + formatMonth(date.getSeconds());
+}
 
 function toast(text) {
   wx.showToast({
@@ -28,6 +40,7 @@ function toast(text) {
   });
   return false;
 }
+
 function utf8_decode(utftext) { // utf-8解码
   var string = '';
   let i = 0;
@@ -52,6 +65,7 @@ function utf8_decode(utftext) { // utf-8解码
   }
   return string;
 }
+
 function base64Decode(input) { // 解码，配合decodeURIComponent使用
   var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
   var output = "";
@@ -102,10 +116,10 @@ function setKeyWord(result, filter) {
 function matchKeyWord(word) {
   return '<span class="search_word">' + word + '</span>';
 }
-
 module.exports = {
   setKeyWord: setKeyWord,
   trim: trim,
   toast: toast,
-  base64Decode: base64Decode
+  base64Decode: base64Decode,
+  parseBsonTime: parseBsonTime
 }

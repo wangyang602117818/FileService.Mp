@@ -1,97 +1,99 @@
 <!--pages/me/me.wxml-->
 <view class='container'>
-   <view class='account_wrap'>
-      <text class="iconfont icon-m-account"></text>
-      <view class='account_data_wrap'>
-        <view class='account_data_name'>
+  <view class='account_wrap'>
+    <text class="iconfont icon-m-account"></text>
+    <view class='account_data_wrap'>
+      <view class='account_data_name'>
         {{userName}}
-        </view>
-        <view class='account_data_role'>
-        {{role}} | {{createTime}}
-        </view>
       </view>
-      
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>公司</text>
-     </view>
-     <view class='setting_line_right'>
-        xx管理有限公司
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>部门</text>
-     </view>
-     <view class='setting_line_right'>
-        财务部, 人事部, 技术部
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
+      <view class='account_data_role'>
+        {{role}} | {{createTime}}
+      </view>
+    </view>
+
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>公司</text>
+    </view>
+    <view class='setting_line_right'>
+      {{company}}
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>部门</text>
+    </view>
+    <view class='setting_line_right'>
+      {{department}}
+    </view>
+  </view>
+  <view class='setting_line'>
+    <navigator url="/pages/changepwd/changepwd?name={{userName}}&role={{role}}">
+      <view class='setting_line_name'>
         <text>修改密码</text>
-     </view>
-     <view class='setting_line_right'>
+      </view>
+      <view class='setting_line_right'>
         <view class='setting_line_data'>***</view>
         <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>文件回收站</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>10</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>日志</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>20</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>扩展名</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>36</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>应用程序</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>2</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>用户</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>30</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='setting_line'>
-     <view class='setting_line_name'>
-        <text>公司</text>
-     </view>
-     <view class='setting_line_right'>
-        <view class='setting_line_data'>10</view>
-        <text class="iconfont icon-m-right"></text>
-     </view>
-   </view>
-   <view class='login_out'>
-     <button class="button_login_out" hover-class='button_login_out_hover' catchtap='logOut'> 退出登录 </button>
-   </view>
+      </view>
+    </navigator>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>文件回收站</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{recyleCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>日志</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{logCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>扩展名</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{extensionCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>应用程序</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{applicationCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>用户</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{userCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='setting_line'>
+    <view class='setting_line_name'>
+      <text>公司</text>
+    </view>
+    <view class='setting_line_right'>
+      <view class='setting_line_data'>{{companyCount}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view>
+  </view>
+  <view class='login_out'>
+    <button class="button_login_out" hover-class='button_login_out_hover' catchtap='logOut'> 退出登录 </button>
+  </view>
 </view>
