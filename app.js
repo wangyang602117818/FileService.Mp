@@ -100,10 +100,10 @@ App({
       }
     })
   },
-  baseUrl: "http://127.0.0.1:5000/api/",
+  baseUrl: "http://192.168.1.103:5000/api/",
   authCode: "1936aef6d2ba",
   apiType: "none",
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1YzE3NjI3NTI5ZDBkOTQ5MTgyZDQ0YzIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoieWFuZyB4IHdhbmciLCJBcHBOYW1lIjoiTWluaSBQcm9ncmFtIiwiQXBpVHlwZSI6Im5vbmUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsImV4cCI6MTU0NzIyMjM5OSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMS8iLCJhdWQiOiJodHRwOi8vMTI3LjAuMC4xLyJ9.uRtdRwME-h8M8Se1zUkYzgxpI1vYEqoDUjgz7RBkWRo",
+  token: "",
   extensions: [],
   funs: require('./utils/util.js'),
   globalData: {

@@ -19,6 +19,9 @@ Page({
     end: false,
     listType: "thumb", //thumb
     selectedIds: [],
+    arrayCount: 3,
+    nestedResult: [],
+
     result: []
   },
   con_tap(e) {
@@ -27,6 +30,11 @@ Page({
     });
     if (this.data.showAdd) this.setData({
       showAdd: false
+    });
+  },
+  changeList(e) {
+    this.setData({
+      listType: this.data.listType == "list" ? "thumb" : "list"
     });
   },
   funBack(e) {
@@ -155,7 +163,12 @@ Page({
         this.setData({
           result: this.data.result,
           count: data.count
-        });
+        }, function() {
+          //另一种视图方式
+          this.setData({
+            nestedResult: util.reMapArray(this.data.result, this.data.arrayCount)
+          });
+        }.bind(this));
       } else {
         util.toast(data.message);
       }

@@ -62,7 +62,7 @@ Page({
             companyCount: res.result.company
           })
         }
-      });
+      },true);
     })
   },
   /**

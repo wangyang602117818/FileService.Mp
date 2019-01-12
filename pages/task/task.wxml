@@ -33,6 +33,6 @@
     <view class='loading' wx:if="{{showLoading==true&&end==false}}">
       <image src='../../images/loading.gif' />
     </view>
-    <view class='data_end' wx:if="{{showLoading==true&&end==true}}">--- end ---</view>
+    <view class='data_end' wx:if="{{end==true}}">--- end ---</view>
   </view>
 </view>

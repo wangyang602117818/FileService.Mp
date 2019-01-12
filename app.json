@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/login/login",
     "pages/index/index",
     "pages/me/me",
     "pages/changepwd/changepwd",
     "pages/task/task",
-    "pages/login/login",
+    
     
     
     "pages/addimage/addimage",

@@ -32,7 +32,18 @@ function parseBsonTime(value) {
   var date = new Date(value);
   return date.getFullYear() + "-" + formatMonth((date.getMonth() + 1)) + "-" + formatMonth(date.getDate()) + " " + formatMonth(date.getHours()) + ":" + formatMonth(date.getMinutes()) + ":" + formatMonth(date.getSeconds());
 }
-
+function reMapArray(array, len) {
+  var new_array = [];
+  for (var i = 0; i < array.length; i += len) {
+    if (i % len == 0) {
+      new_array.push(array.slice(i, i + len));
+    }
+  }
+  while (new_array[new_array.length - 1].length < len) {
+    new_array[new_array.length - 1].push(null);
+  }
+  return new_array;
+}
 function toast(text) {
   wx.showToast({
     title: text,
@@ -121,5 +132,6 @@ module.exports = {
   trim: trim,
   toast: toast,
   base64Decode: base64Decode,
-  parseBsonTime: parseBsonTime
+  parseBsonTime: parseBsonTime,
+  reMapArray: reMapArray
 }
