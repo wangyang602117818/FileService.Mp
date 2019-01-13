@@ -17,11 +17,10 @@ Page({
     showAdd: false,
     showBottomFun: false,
     end: false,
-    listType: "thumb", //thumb
+    listType: wx.getStorageSync("resource_view_type")||"list", //thumb
     selectedIds: [],
     arrayCount: 3,
     nestedResult: [],
-
     result: []
   },
   con_tap(e) {
@@ -34,7 +33,19 @@ Page({
   },
   changeList(e) {
     this.setData({
+      showBottomFun:false,
       listType: this.data.listType == "list" ? "thumb" : "list"
+    },function(){
+      wx.setStorageSync('resource_view_type', this.data.listType)
+    }.bind(this));
+  },
+  longPress(e){
+    var id = e.currentTarget.dataset.id;
+    this.selectItemInner(id);
+    this.setData({
+      showBottomFun: true
+    }, function () {
+      wx.hideTabBar({});
     });
   },
   funBack(e) {
@@ -52,7 +63,21 @@ Page({
   previewFile(e) {
     var id = e.currentTarget.dataset.id;
     var filename = e.currentTarget.dataset.filename;
-    var url = app.baseUrl + "download/get/" + id;
+    var subid = e.currentTarget.dataset.subid;
+    var documentExt = util.getFileExtension(filename);
+    if (app.documentOffice.indexOf(documentExt)>-1){
+      this.previewDocument(app.baseUrl + "download/get/" + id);
+    } else if (app.documentWps.indexOf(documentExt)>-1){
+      this.previewDocument(app.baseUrl + "download/getconvert/" + subid);
+    } else if (app.images.indexOf(documentExt)>-1){
+      this.previewImage(app.baseUrl + "download/get/" + id+"?access_token="+app.token);
+    } else if (app.videos.indexOf(documentExt)>-1){
+      wx.navigateTo({
+        url: '/pages/previewvideo/previewvideo?id='+id+"&filename="+filename,
+      })
+    }
+  },
+  previewDocument(url){
     wx.downloadFile({
       url: url,
       header: {
@@ -69,8 +94,17 @@ Page({
       }
     })
   },
+  previewImage(url){
+    wx.previewImage({
+      current: url, 
+      urls: [url] 
+    })
+  },
   selectItem(e) {
     var id = e.currentTarget.dataset.id;
+    this.selectItemInner(id);
+  },
+  selectItemInner(id){
     for (var i = 0; i < this.data.result.length; i++) {
       if (this.data.result[i]._id.$oid == id) {
         this.data.result[i].selected = !this.data.result[i].selected;
@@ -85,7 +119,7 @@ Page({
     }
     if (selectedIds.length > 0) {
       wx.hideTabBar({
-        success: function() {
+        success: function () {
           this.setData({
             showBottomFun: true,
             selectedIds: selectedIds
@@ -96,7 +130,7 @@ Page({
       this.setData({
         showBottomFun: false,
         selectedIds: selectedIds
-      }, function() {
+      }, function () {
         wx.showTabBar({});
       });
     }

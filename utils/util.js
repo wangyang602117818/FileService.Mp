@@ -127,11 +127,17 @@ function setKeyWord(result, filter) {
 function matchKeyWord(word) {
   return '<span class="search_word">' + word + '</span>';
 }
+function getFileExtension(filename){
+  var dot = filename.lastIndexOf(".");
+  if (dot == -1) return ".unknown";
+  return filename.substring(dot, filename.length).toLowerCase();
+}
 module.exports = {
   setKeyWord: setKeyWord,
   trim: trim,
   toast: toast,
   base64Decode: base64Decode,
   parseBsonTime: parseBsonTime,
-  reMapArray: reMapArray
+  reMapArray: reMapArray,
+  getFileExtension: getFileExtension
 }

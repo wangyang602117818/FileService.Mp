@@ -7,7 +7,7 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (this.token.length > 0) {
-          this.getExtensions();
+          // this.getExtensions();
           wx.switchTab({
             url: '/pages/index/index'
           })
@@ -19,7 +19,7 @@ App({
           }, function(result) {
             if (result.code == 0) {
               this.token = result.result;
-              this.getExtensions();
+              // this.getExtensions();
               wx.switchTab({
                 url: '/pages/index/index'
               })
@@ -102,8 +102,12 @@ App({
   },
   baseUrl: "http://192.168.1.103:5000/api/",
   authCode: "1936aef6d2ba",
+  documentOffice: [".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf"],
+  documentWps: [".odg", ".ods", ".odp", ".odf", ".odt", ".wps", ".et", ".dps"],
+  images: [".jpg", ".png", ".gif", ".bmp", ".jpeg", ".pic", ".ico", ".tif",".svg"],
+  videos: [".mp4", ".avi", ".wmv", ".mov", ".mkv", ".flv", ".rm", ".rmvb",".m3u8"],
   apiType: "none",
-  token: "",
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1YzFkMDMzMzUyMGRmZTA4YWNjM2Y3MjYiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoid2FuZyIsIkFwcE5hbWUiOiJNaW5pUHJvZ3JhbSIsIkFwaVR5cGUiOiJub25lIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiYWRtaW4iLCJleHAiOjE1NDczOTUxOTksImlzcyI6Imh0dHA6Ly8xMjcuMC4wLjEvIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMS8ifQ.Q3_lutpNPMPEinHlMnc33xtiNqjGTSTZ-to2EpV0Lx8",
   extensions: [],
   funs: require('./utils/util.js'),
   globalData: {

@@ -1,0 +1,9 @@
+<view class="container">
+  <view class='video_title'>
+    {{filename}}
+  </view>
+  <view class='video_body'>
+    <video src="{{videoBaseUrl+'/'+id}}" controls>
+    </video>
+  </view>
+</view>

@@ -33,8 +33,8 @@
     </view>
   </view>
   <view class="data_container" style="margin-bottom:{{showBottomFun==true?'95rpx':'0rpx'}}">
-    <view class="data_line" wx:if="{{listType=='list'}}" wx:for="{{result}}" wx:key="unique" catchtap='previewFile' data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}">
-      <view class='data_line_image_wrap' style="background-image: url({{getFileIconMobile+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
+    <view class="data_line" wx:if="{{listType=='list'}}" wx:for="{{result}}" wx:key="unique">
+      <view class='data_line_image_wrap' hover-class="data_line_hover" catchtap='previewFile' data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}" data-subid="{{(item.Files&&item.Files.length>0)?item.Files[0]._id.$oid:''}}" style="background-image: url({{getFileIconMobile+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
       <view class="data_meta">
         <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}</view>
         <view class="data_meta_subtitle">{{funs.convertFileSize(item.Length)}} | {{funs.parseBsonTime(item.CreateTime)}}</view>
@@ -46,9 +46,9 @@
     </view>
     <view class='data_thumb_container' wx:if="{{listType=='thumb'}}">
       <view class='data_thumb_line' wx:for="{{nestedResult}}" wx:key="unique" wx:for-index="groupindex">
-        <view class='data_thumb_item'  wx:for="{{nestedResult[groupindex]}}" wx:key="unique">
+        <view class='{{selectedIds.indexOf(item._id.$oid)>-1?"data_thumb_item selected":"data_thumb_item"}}' bindlongpress="longPress" data-id="{{item._id.$oid}}" wx:for="{{nestedResult[groupindex]}}" wx:key="unique">
           <block wx:if="{{item!=null}}">
-            <text class="iconfont icon-m-detail"></text>
+            <text class="iconfont icon-m-detail" catchtap='longPress' data-id="{{item._id.$oid}}"></text>
             <view class='data_thumb_image' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
             <view class='data_thumb_meta'>{{funs.getFileName(item.FileName,4)}}</view>
           </block>
