@@ -99,9 +99,11 @@
   margin-top: 20rpx;
   justify-content: flex-start;
 }
-.data_thumb_line .selected{
-  border:1px solid #f60;
+
+.data_thumb_line .selected {
+  border: 1px solid #f60;
 }
+
 .data_thumb_item {
   border: 1px solid #e0e0e0;
   height: 220rpx;
@@ -141,7 +143,7 @@
   width: 35rpx;
   position: absolute;
   color: #5f5d5d;
-  left:0;
+  left: 0;
   top: 0;
   align-items: center;
   justify-content: center;

@@ -17,7 +17,7 @@ Page({
     showAdd: false,
     showBottomFun: false,
     end: false,
-    listType: wx.getStorageSync("resource_view_type")||"list", //thumb
+    listType: wx.getStorageSync("resource_view_type") || "list", //thumb
     selectedIds: [],
     arrayCount: 3,
     nestedResult: [],
@@ -33,20 +33,15 @@ Page({
   },
   changeList(e) {
     this.setData({
-      showBottomFun:false,
+      showBottomFun: false,
       listType: this.data.listType == "list" ? "thumb" : "list"
-    },function(){
+    }, function () {
       wx.setStorageSync('resource_view_type', this.data.listType)
     }.bind(this));
   },
-  longPress(e){
+  longPress(e) {
     var id = e.currentTarget.dataset.id;
-    this.selectItemInner(id);
-    this.setData({
-      showBottomFun: true
-    }, function () {
-      wx.hideTabBar({});
-    });
+    
   },
   funBack(e) {
     for (var i = 0; i < this.data.result.length; i++) {
@@ -56,7 +51,7 @@ Page({
       result: this.data.result,
       showBottomFun: false,
       selectedIds: []
-    }, function() {
+    }, function () {
       wx.showTabBar({});
     })
   },
@@ -65,19 +60,36 @@ Page({
     var filename = e.currentTarget.dataset.filename;
     var subid = e.currentTarget.dataset.subid;
     var documentExt = util.getFileExtension(filename);
-    if (app.documentOffice.indexOf(documentExt)>-1){
+    if (app.documentOffice.indexOf(documentExt) > -1) {
       this.previewDocument(app.baseUrl + "download/get/" + id);
-    } else if (app.documentWps.indexOf(documentExt)>-1){
+    } else if (app.documentWps.indexOf(documentExt) > -1) {
       this.previewDocument(app.baseUrl + "download/getconvert/" + subid);
-    } else if (app.images.indexOf(documentExt)>-1){
-      this.previewImage(app.baseUrl + "download/get/" + id+"?access_token="+app.token);
-    } else if (app.videos.indexOf(documentExt)>-1){
+    } else if (app.images.indexOf(documentExt) > -1) {
+      var currentUrl = app.baseUrl + "download/get/" + id + "?access_token=" + app.token;
+      var urls = [];
+      for (var i = 0; i < this.data.result.length; i++) {
+        if (app.images.indexOf(util.getFileExtension(this.data.result[i].FileName)) > -1) {
+          urls.push(app.baseUrl + "download/get/" + this.data.result[i]._id.$oid + "?access_token=" + app.token);
+        }
+      }
+      this.previewImage(currentUrl, urls);
+    } else if (app.videos.indexOf(documentExt) > -1) {
       wx.navigateTo({
-        url: '/pages/previewvideo/previewvideo?id='+id+"&filename="+filename,
+        url: '/pages/previewvideo/previewvideo?id=' + id + "&filename=" + filename,
       })
+    } else if (app.audios.indexOf(documentExt)>-1){
+      wx.navigateTo({
+        url: '/pages/previewaudio/previewaudio?id=' + id + "&filename=" + filename,
+      })
+    } else if (app.text.indexOf(documentExt)>-1){
+      wx.navigateTo({
+        url: '/pages/previewtext/previewtext?id=' + id + "&filename=" + filename,
+      })
+    }else{
+      util.toast("不支持预览")
     }
   },
-  previewDocument(url){
+  previewDocument(url) {
     wx.downloadFile({
       url: url,
       header: {
@@ -94,17 +106,17 @@ Page({
       }
     })
   },
-  previewImage(url){
+  previewImage(currentUrl, urls) {
     wx.previewImage({
-      current: url, 
-      urls: [url] 
+      current: currentUrl,
+      urls: urls
     })
   },
   selectItem(e) {
     var id = e.currentTarget.dataset.id;
     this.selectItemInner(id);
   },
-  selectItemInner(id){
+  selectItemInner(id) {
     for (var i = 0; i < this.data.result.length; i++) {
       if (this.data.result[i]._id.$oid == id) {
         this.data.result[i].selected = !this.data.result[i].selected;
@@ -161,11 +173,11 @@ Page({
     }
     this.getData(false, null, true);
   },
-  onLoad: function() {
+  onLoad: function () {
     this.data.pageIndex = 1;
     this.getData(false, null, true);
   },
-  search: function(e) {
+  search: function (e) {
     this.data.pageIndex = 1;
     this.setData({
       end: false
@@ -173,15 +185,15 @@ Page({
     var value = e.detail.value;
     this.setData({
       filter: value
-    }, function() {
+    }, function () {
       this.getData(false, null, true);
     }.bind(this));
   },
-  getData: function(append, callback, loading) {
+  getData: function (append, callback, loading) {
     var url = app.baseUrl + "files/getfiles?" + "pageIndex=" + this.data.pageIndex + "&pageSize=" + this.data.pageSize + "&filter=" + this.data.filter;
     if (this.data.orderField) url = url + "&orderField=" + this.data.orderField;
     if (this.data.orderFieldType) url = url + "&orderFieldType=" + this.data.orderFieldType;
-    app.get(url, {}, function(data) {
+    app.get(url, {}, function (data) {
       if (data.code == 0) {
         //util.setKeyWord(data, this.data.filter);
         if (this.data.pageIndex * this.data.pageSize > data.count) {
@@ -197,7 +209,7 @@ Page({
         this.setData({
           result: this.data.result,
           count: data.count
-        }, function() {
+        }, function () {
           //另一种视图方式
           this.setData({
             nestedResult: util.reMapArray(this.data.result, this.data.arrayCount)
@@ -209,19 +221,19 @@ Page({
       if (callback) callback();
     }.bind(this), loading)
   },
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
     this.data.pageIndex = 1;
     this.setData({
       end: false,
       showBottomFun: false
-    }, function() {
+    }, function () {
       wx.showTabBar({});
     });
-    this.getData(false, function() {
+    this.getData(false, function () {
       wx.stopPullDownRefresh();
     }, true);
   },
-  onReachBottom: function() {
+  onReachBottom: function () {
     this.setData({
       showLoading: true
     });

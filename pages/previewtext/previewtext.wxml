@@ -1,0 +1,8 @@
+<view class="container">
+   <view class='text_title'>
+    {{filename}}
+  </view>
+  <view class='text_body'>
+    {{text}}
+  </view>
+</view>

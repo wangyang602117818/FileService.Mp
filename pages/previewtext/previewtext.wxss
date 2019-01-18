@@ -1,4 +1,4 @@
-.video_title{
+.text_title{
   margin-top: 20rpx;
   display: flex;
   width: 100%;
@@ -6,10 +6,10 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-.video_body{
-  margin-top: 30rpx;
+.text_body{
+  margin-top: 10rpx;
+  margin-bottom: 50rpx;
   width: 100%;
-}
-.video_body video{
-  width: 100%;
+  font-size: 22rpx;
+  white-space: pre-wrap;
 }

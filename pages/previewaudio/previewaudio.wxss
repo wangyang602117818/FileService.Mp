@@ -1,4 +1,4 @@
-.video_title{
+.audio_title{
   margin-top: 20rpx;
   display: flex;
   width: 100%;
@@ -6,10 +6,10 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
-.video_body{
+.audio_body{
   margin-top: 30rpx;
   width: 100%;
 }
-.video_body video{
+.audio_body audio{
   width: 100%;
 }

@@ -2,8 +2,8 @@ const app = getApp()
 const util = require("../../utils/util.js")
 Page({
   data: {
-    userName: "",
-    passWord: ""
+    userName: "yang x wang",
+    passWord: "pass1234"
   },
   bindUserNameInput: function(e) {
     this.setData({
