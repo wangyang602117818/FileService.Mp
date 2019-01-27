@@ -46,7 +46,7 @@
     </view>
     <view class='data_thumb_container' wx:if="{{listType=='thumb'}}">
       <view class='data_thumb_line' wx:for="{{nestedResult}}" wx:key="unique" wx:for-index="groupindex">
-        <view class='data_thumb_item' bindlongpress="longPress" data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}" wx:for="{{nestedResult[groupindex]}}" wx:key="unique" hover-class="data_line_hover" catchtap='previewFile'>
+        <view class='data_thumb_item' bindlongpress="longPress" data-id="{{item._id.$oid}}" data-filename="{{item.FileName}}" wx:for="{{nestedResult[groupindex]}}"  data-subid="{{(item.Files&&item.Files.length>0)?item.Files[0]._id.$oid:''}}" wx:key="unique" hover-class="data_line_hover" catchtap='previewFile'>
           <block wx:if="{{item!=null}}">
             <text class="iconfont icon-m-detail" catchtap='longPress' data-id="{{item._id.$oid}}"></text>
             <view class='data_thumb_image' style="background-image: url({{getFileIcon+'/'+item.FileId.$oid+funs.getFileExtension(item.FileName)}})"></view>
