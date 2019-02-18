@@ -100,16 +100,16 @@ App({
       }
     })
   },
-  baseUrl: "http://127.0.0.1:5000/api/",
+  baseUrl: "http://192.168.1.103:5000/api/",
   authCode: "1936aef6d2ba",
   documentOffice: [".doc", ".docx", ".xls", ".xlsx", ".ppt", ".pptx", ".pdf"],
   documentWps: [".odg", ".ods", ".odp", ".odf", ".odt", ".wps", ".et", ".dps"],
   images: [".jpg", ".png", ".gif", ".bmp", ".jpeg", ".pic", ".ico", ".tif", ".svg"],
   videos: [".mp4", ".avi", ".wmv", ".mov", ".mkv", ".flv", ".rm", ".rmvb", ".m3u8"],
   audios:[".mp3"],
-  text:[".txt"],
+  text:[".txt",".js",".html",".htm",".css",".json"],
   apiType: "none",
-  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI1YzE3NjI3NTI5ZDBkOTQ5MTgyZDQ0YzIiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoieWFuZyB4IHdhbmciLCJBcHBOYW1lIjoiTWluaSBQcm9ncmFtIiwiQXBpVHlwZSI6Im5vbmUiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJhZG1pbiIsImV4cCI6MTU0ODI1OTE5OSwiaXNzIjoiaHR0cDovLzEyNy4wLjAuMS8iLCJhdWQiOiJodHRwOi8vMTI3LjAuMC4xLyJ9.xRrZmyeAxMSAxfBQYnZqkoI4BC6bV-fJPfsBP0wd5OE",
+  token: "",
   extensions: [],
   funs: require('./utils/util.js'),
   globalData: {

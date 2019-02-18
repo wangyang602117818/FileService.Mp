@@ -35,13 +35,37 @@ Page({
     this.setData({
       showBottomFun: false,
       listType: this.data.listType == "list" ? "thumb" : "list"
-    }, function () {
+    }, function() {
       wx.setStorageSync('resource_view_type', this.data.listType)
     }.bind(this));
   },
   longPress(e) {
     var id = e.currentTarget.dataset.id;
-    
+    this.setLongPress(id, true);
+  },
+  setLongPress(id, b) {
+    for (var i = 0; i < this.data.nestedResult.length; i++) {
+      var result = this.data.nestedResult[i];
+      for (var j = 0; j < result.length; j++) {
+        if (!result[j]) continue;
+        if (result[j]._id.$oid == id) {
+          result[j].longPress = b;
+        }
+      }
+    }
+    this.setData({
+      nestedResult: this.data.nestedResult
+    });
+  },
+  removeItem(e) {
+    var id = e.currentTarget.dataset.id;
+    app.get(app.baseUrl + "files/remove/" + id, {}, function(data) {
+      if (data.code == 0) {
+        this.getData(false, null, true);
+      } else {
+        util.toast(data.message);
+      }
+    }.bind(this), true);
   },
   funBack(e) {
     for (var i = 0; i < this.data.result.length; i++) {
@@ -51,7 +75,7 @@ Page({
       result: this.data.result,
       showBottomFun: false,
       selectedIds: []
-    }, function () {
+    }, function() {
       wx.showTabBar({});
     })
   },
@@ -59,6 +83,11 @@ Page({
     var id = e.currentTarget.dataset.id;
     var filename = e.currentTarget.dataset.filename;
     var subid = e.currentTarget.dataset.subid;
+    var longpress = e.currentTarget.dataset.longpress;
+    if (longpress == true) {
+      this.setLongPress(id, false);
+      return;
+    }
     var documentExt = util.getFileExtension(filename);
     if (app.documentOffice.indexOf(documentExt) > -1) {
       this.previewDocument(app.baseUrl + "download/get/" + id);
@@ -77,15 +106,15 @@ Page({
       wx.navigateTo({
         url: '/pages/previewvideo/previewvideo?id=' + id + "&filename=" + filename,
       })
-    } else if (app.audios.indexOf(documentExt)>-1){
+    } else if (app.audios.indexOf(documentExt) > -1) {
       wx.navigateTo({
         url: '/pages/previewaudio/previewaudio?id=' + id + "&filename=" + filename,
       })
-    } else if (app.text.indexOf(documentExt)>-1){
+    } else if (app.text.indexOf(documentExt) > -1) {
       wx.navigateTo({
         url: '/pages/previewtext/previewtext?id=' + id + "&filename=" + filename,
       })
-    }else{
+    } else {
       util.toast("不支持预览")
     }
   },
@@ -131,7 +160,7 @@ Page({
     }
     if (selectedIds.length > 0) {
       wx.hideTabBar({
-        success: function () {
+        success: function() {
           this.setData({
             showBottomFun: true,
             selectedIds: selectedIds
@@ -142,7 +171,7 @@ Page({
       this.setData({
         showBottomFun: false,
         selectedIds: selectedIds
-      }, function () {
+      }, function() {
         wx.showTabBar({});
       });
     }
@@ -173,11 +202,11 @@ Page({
     }
     this.getData(false, null, true);
   },
-  onLoad: function () {
+  onLoad: function() {
     this.data.pageIndex = 1;
     this.getData(false, null, true);
   },
-  search: function (e) {
+  search: function(e) {
     this.data.pageIndex = 1;
     this.setData({
       end: false
@@ -185,15 +214,15 @@ Page({
     var value = e.detail.value;
     this.setData({
       filter: value
-    }, function () {
+    }, function() {
       this.getData(false, null, true);
     }.bind(this));
   },
-  getData: function (append, callback, loading) {
+  getData: function(append, callback, loading) {
     var url = app.baseUrl + "files/getfiles?" + "pageIndex=" + this.data.pageIndex + "&pageSize=" + this.data.pageSize + "&filter=" + this.data.filter;
     if (this.data.orderField) url = url + "&orderField=" + this.data.orderField;
     if (this.data.orderFieldType) url = url + "&orderFieldType=" + this.data.orderFieldType;
-    app.get(url, {}, function (data) {
+    app.get(url, {}, function(data) {
       if (data.code == 0) {
         //util.setKeyWord(data, this.data.filter);
         if (this.data.pageIndex * this.data.pageSize > data.count) {
@@ -209,7 +238,7 @@ Page({
         this.setData({
           result: this.data.result,
           count: data.count
-        }, function () {
+        }, function() {
           //另一种视图方式
           this.setData({
             nestedResult: util.reMapArray(this.data.result, this.data.arrayCount)
@@ -221,19 +250,19 @@ Page({
       if (callback) callback();
     }.bind(this), loading)
   },
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.data.pageIndex = 1;
     this.setData({
       end: false,
       showBottomFun: false
-    }, function () {
+    }, function() {
       wx.showTabBar({});
     });
-    this.getData(false, function () {
+    this.getData(false, function() {
       wx.stopPullDownRefresh();
     }, true);
   },
-  onReachBottom: function () {
+  onReachBottom: function() {
     this.setData({
       showLoading: true
     });
