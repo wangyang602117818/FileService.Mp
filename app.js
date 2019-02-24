@@ -2,6 +2,8 @@
 const util = require("/utils/util.js")
 App({
   onShow() {
+    var pages = getCurrentPages();
+    if(pages.length>0)return;
     // 登录
     wx.login({
       success: res => {
@@ -19,9 +21,11 @@ App({
           }, function(result) {
             if (result.code == 0) {
               this.token = result.result;
-              // this.getExtensions();
-              wx.switchTab({
-                url: '/pages/index/index'
+              // wx.switchTab({
+              //   url: '/pages/index/index'
+              // })
+              wx.navigateTo({
+                url: '/pages/addimage/addimage',
               })
             }
           }.bind(this), true);
@@ -30,6 +34,8 @@ App({
     })
   },
   onLaunch: function() {
+    var pages = getCurrentPages();
+    if (pages.length > 0) return;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())

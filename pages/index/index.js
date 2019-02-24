@@ -31,6 +31,11 @@ Page({
       showAdd: false
     });
   },
+  addImage(e){
+    wx.navigateTo({
+      url:"/pages/addimage/addimage"
+    })
+  },
   changeList(e) {
     this.setData({
       showBottomFun: false,
@@ -65,7 +70,7 @@ Page({
       } else {
         util.toast(data.message);
       }
-    }.bind(this), true);
+    }.bind(this), false);
   },
   funBack(e) {
     for (var i = 0; i < this.data.result.length; i++) {

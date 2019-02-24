@@ -18,7 +18,7 @@
       <view id="CreateTime" class="{{orderField=='CreateTime'?'current':''}}" catchtap="changOrder">创建时间 {{orderField=='CreateTime'?'✔':''}}</view>
     </view>
     <view class='search_add' style="display:{{showAdd==true?'flex':'none'}}">
-      <view>
+      <view catchtap='addImage'>
         <text class="iconfont icon-m-image"></text>
         <text class='funs_text'>添加图片</text>
       </view>

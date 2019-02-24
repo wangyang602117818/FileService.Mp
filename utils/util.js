@@ -47,7 +47,8 @@ function reMapArray(array, len) {
 function toast(text) {
   wx.showToast({
     title: text,
-    icon: "none"
+    icon: "none",
+    duration:1000
   });
   return false;
 }

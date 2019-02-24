@@ -1,9 +1,12 @@
 <view class="container">
   <view class='image_list'>
-    <view class='image_item'>
-      <image src='../../images/1_162252_2.jpg'></image>
+    <view class='image_item' wx:for="{{imageUrls}}" wx:for-index="idx" wx:key="unique" catchtap='previewFile' data-url="{{item}}" bindlongpress='longPress'>
+      <image src="{{item}}"></image>
+      <view class='background_item' wx:if="{{longPressIndex==idx+1}}">
+        <view class='background_del' catchtap='removeItem' data-id="{{idx}}">删除</view>
+      </view>
     </view>
-    <view class='image_item'>
+    <view class='image_item' catchtap='chooseImage'>
       <text class="iconfont icon-m-plus"></text>
     </view>
   </view>
