@@ -1,64 +1,73 @@
 <view class="container">
   <view class='setting_line'>
     <view class='setting_line_name'>
-      <input type='text' placeholder='标识'></input>
+      <input type='text' placeholder='标识' bindinput="flagChange"></input>
     </view>
     <view class='setting_line_right'>
     </view>
   </view>
-  <view class='setting_line'>
+  <view class='setting_line' catchtap='showOutputFormat'>
     <view class='setting_line_name'>
       <text>输出格式</text>
     </view>
     <view class='setting_line_right'>
-      <view class='setting_line_data'>默认</view>
+      <view class='setting_line_data'>{{formatItems[format]}}</view>
       <text class="iconfont icon-m-right"></text>
     </view>
   </view>
-   <view class='setting_line'>
+  <view class='setting_line' catchtap='showConvertModel'>
     <view class='setting_line_name'>
       <text>转换模式</text>
     </view>
     <view class='setting_line_right'>
-      <view class='setting_line_data'>缩放</view>
+      <view class='setting_line_data'>{{modelItems[model]}}</view>
       <text class="iconfont icon-m-right"></text>
     </view>
   </view>
-   <view class='setting_line'>
+  <view class='setting_line_v' wx:if="{{model==1}}">
     <view class='setting_line_name'>
-      <text>Top</text>
+      <text>Top(px)</text>
+    </view>
+    <view class='setting_line_data'>
+      <slider bindchange="sliderChangeTop" min="0" max="{{maxHeight==0?900:maxHeight}}" show-value backgroundColor="#aaa" block-size="20"/>
+    </view>
+  </view>
+  <view class='setting_line_v' wx:if="{{model==1}}">
+    <view class='setting_line_name'>
+      <text>Left(px)</text>
+    </view>
+    <view class='setting_line_data'>
+      <slider bindchange="sliderChangeLeft" min="0" max="{{maxWidth==0?900:maxWidth}}" show-value backgroundColor="#aaa" block-size="20"/>
+    </view>
+  </view>
+  <view class='setting_line_v' wx:if="{{model==2||model==0||model==1}}">
+    <view class='setting_line_name'>
+      <text>宽度(px)</text>
+    </view>
+     <view class='setting_line_data'>
+      <slider bindchange="sliderChangeWidth" min="0" max="{{maxWidth==0?1000:maxWidth}}" show-value backgroundColor="#aaa" block-size="20"/>
+    </view>
+  </view>
+  <view class='setting_line_v' wx:if="{{model==3||model==0||model==1}}">
+    <view class='setting_line_name'>
+      <text>高度(px)</text>
+    </view>
+    <view class='setting_line_data'>
+      <slider bindchange="sliderChangeHeight" min="0" max="{{maxHeight==0?1000:maxHeight}}" show-value backgroundColor="#aaa" block-size="20"/>
+    </view>
+    <!-- <view class='setting_line_right'>
+      <view class='setting_line_data'>{{(model==0&&height==0)?"默认":height+"px"}}</view>
+      <text class="iconfont icon-m-right"></text>
+    </view> -->
+  </view>
+  <view class='setting_line' catchtap='showQualityModel'>
+    <view class='setting_line_name'>
+      <text>质量</text>
     </view>
     <view class='setting_line_right'>
-      <view class='setting_line_data'>0</view>
+      <view class='setting_line_data'>{{imageQualityItems[imageQuality]}}</view>
       <text class="iconfont icon-m-right"></text>
     </view>
   </view>
-   <view class='setting_line'>
-    <view class='setting_line_name'>
-      <text>Left</text>
-    </view>
-    <view class='setting_line_right'>
-      <view class='setting_line_data'>0</view>
-      <text class="iconfont icon-m-right"></text>
-    </view>
-  </view>
-   <view class='setting_line'>
-    <view class='setting_line_name'>
-      <text>宽度</text>
-    </view>
-    <view class='setting_line_right'>
-      <view class='setting_line_data'>300px</view>
-      <text class="iconfont icon-m-right"></text>
-    </view>
-  </view>
-   <view class='setting_line'>
-    <view class='setting_line_name'>
-      <text>高度</text>
-    </view>
-    <view class='setting_line_right'>
-      <view class='setting_line_data'>300px</view>
-      <text class="iconfont icon-m-right"></text>
-    </view>
-  </view>
-   <button class="buttom_primary" hover-class='buttom_primary_hover' bindtap='login'> 确 定 </button>
+  <button class="buttom_primary" hover-class='buttom_primary_hover' bindtap='ok'> 确 定 </button>
 </view>

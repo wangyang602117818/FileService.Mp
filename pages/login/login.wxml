@@ -2,10 +2,10 @@
    <view class='login_form'>
       <image src='../../images/logo.png' class='logo'></image>
       <view class="form_line">
-        <input type="text"  placeholder="UserName" bindinput="bindUserNameInput" />
+        <input type="text"  placeholder="UserName" bindinput="bindUserNameInput"/>
       </view>
       <view class="form_line">
-        <input type="text" password  placeholder="PassWord" bindinput="bindPassWordInput" />
+        <input type="text" password  placeholder="PassWord" bindinput="bindPassWordInput"/>
       </view>
       <view class="form_line">
         <button class="button_login" hover-class='button_login_hover' bindtap='login'> 登 录 </button>

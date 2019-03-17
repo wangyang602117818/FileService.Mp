@@ -193,6 +193,11 @@ navigator {
 .setting_line .setting_line_name {
   flex: 1;
   display: flex;
+  font-size: 25rpx;
+}
+
+.setting_line .setting_line_data {
+  font-size: 22rpx;
 }
 
 .setting_line .setting_line_right {
@@ -205,6 +210,34 @@ navigator {
 .setting_line .setting_line_right .setting_line_data {
   display: inline-block;
   margin-right: 20rpx;
+}
+
+.setting_line_v {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 130rpx;
+  align-items: left;
+  font-size: 25rpx;
+}
+
+.setting_line_v .setting_line_name {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.setting_line_v .setting_line_data {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+slider {
+  margin: 5rpx 15rpx;
+  width: 100%;
 }
 
 .icon-m-detail:before {
