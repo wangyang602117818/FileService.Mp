@@ -14,7 +14,8 @@ Page({
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     imageQualityItems: ['高', '中', '低'],
     maxWidth: 0,
-    maxHeight: 0
+    maxHeight: 0,
+    index: null
   },
   flagChange: function(e) {
     this.setData({
@@ -77,7 +78,7 @@ Page({
     }
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
-    prevPage.data.converts.push({
+    var obj = {
       flag: this.data.flag,
       format: this.data.format,
       model: this.data.model,
@@ -85,8 +86,12 @@ Page({
       y: this.data.y,
       width: this.data.width,
       height: this.data.height,
-      imageQuality: this.data.imageQuality
-    });
+      imageQuality: this.data.imageQuality};
+    if(this.data.index==null){
+      prevPage.data.converts.push(obj);
+    }else{
+      prevPage.data.converts[this.data.index] = obj;
+    }
     prevPage.setData({
       converts: prevPage.data.converts
     });
@@ -95,16 +100,28 @@ Page({
     })
   },
   onLoad: function(options) {
-    options.index >= 0 ? wx.setNavigationBarTitle({
-      title: '修改转换'
-    }) : wx.setNavigationBarTitle({
-      title: '添加转换'
-    })
-
+    if (options.index >= 0) {
+      wx.setNavigationBarTitle({
+        title: '修改转换'
+      });
+      this.setData({ index: options.index});
+    } else {
+      wx.setNavigationBarTitle({
+        title: '添加转换'
+      })
+      this.setData({ index: null });
+    }
     this.setData({
       maxWidth: options.maxWidth || 0,
       maxHeight: options.maxHeight || 0,
-
+      flag: options.flag||"",
+      format: options.format || 0,
+      model: options.model||0,
+      x:options.x||0,
+      y:options.y||0,
+      width:options.width||0,
+      height:options.height||0,
+      imageQuality: options.imageQuality||0
     })
 
   }

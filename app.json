@@ -12,7 +12,7 @@
     "pages/previewtext/previewtext",
     
     "pages/addimage/addimage",
-    
+    "pages/adddepartment/adddepartment",
     "pages/addconvert/addconvert"
     
   ],

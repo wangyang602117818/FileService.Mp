@@ -3,6 +3,7 @@ Page({
   data: {
     imageUrls: [],
     converts: [],
+    departments:[],
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
@@ -33,6 +34,24 @@ Page({
       }
     }
   },
+  delConvert(e) {
+    var index = e.currentTarget.dataset.key;
+    var flag = e.currentTarget.dataset.flag;
+    var that = this;
+    wx.showModal({
+      title: flag,
+      content: '是否删除？',
+      confirmColor: "#f60",
+      success(res) {
+        if (res.confirm) {
+          that.data.converts.splice(index,1);
+          that.setData({
+            converts: that.data.converts
+          });
+        }
+      }
+    })
+  },
   removeItem: function(e) {
     var id = e.currentTarget.dataset.id;
     this.data.imageUrls.splice(id, 1);
@@ -62,6 +81,25 @@ Page({
       url: "/pages/addconvert/addconvert?maxWidth=" + this.maxWidth + "&maxHeight=" + this.maxHeight
     })
   },
+  addDepartment(){
+    var dept=[];
+    for (var i = 0; i < this.data.departments.length;i++){
+      dept.push(this.data.departments[i].DepartmentName);
+    }
+    wx.showActionSheet({
+      itemList: dept,
+      success(res) {
+        var code = this.data.departments[i].DepartmentCode;
+        wx.navigateTo({
+          url: "/pages/adddepartment/adddepartment?code=" + code
+        })
+      },
+      fail(res) {
+        console.log(res.errMsg)
+      }
+    })
+    
+  },
   updateConvert(e) {
     var index = e.currentTarget.dataset.key;
     var convert = this.data.converts[index];
@@ -85,6 +123,12 @@ Page({
     }
   },
   onLoad: function() {
-
+    app.get(app.baseUrl + "department/getalldepartment", {}, function (res) {
+      if (res.code == 0) {
+        this.setData({
+          departments: res.result,
+        })
+      }
+    }.bind(this));
   }
 })

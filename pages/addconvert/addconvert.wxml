@@ -1,7 +1,7 @@
 <view class="container">
   <view class='setting_line'>
     <view class='setting_line_name'>
-      <input type='text' placeholder='标识' bindinput="flagChange"></input>
+      <input type='text' placeholder='标识' bindinput="flagChange" value='{{flag}}'></input>
     </view>
     <view class='setting_line_right'>
     </view>
@@ -29,7 +29,7 @@
       <text>Top(px)</text>
     </view>
     <view class='setting_line_data'>
-      <slider bindchange="sliderChangeTop" min="0" max="{{maxHeight==0?900:maxHeight}}" show-value backgroundColor="#aaa" block-size="20"/>
+      <slider bindchange="sliderChangeTop" min="0" max="{{maxHeight==0?900:maxHeight}}" value='{{y}}' show-value backgroundColor="#aaa" block-size="20"/>
     </view>
   </view>
   <view class='setting_line_v' wx:if="{{model==1}}">
@@ -37,7 +37,7 @@
       <text>Left(px)</text>
     </view>
     <view class='setting_line_data'>
-      <slider bindchange="sliderChangeLeft" min="0" max="{{maxWidth==0?900:maxWidth}}" show-value backgroundColor="#aaa" block-size="20"/>
+      <slider bindchange="sliderChangeLeft" min="0" max="{{maxWidth==0?900:maxWidth}}" value='{{x}}' show-value backgroundColor="#aaa" block-size="20"/>
     </view>
   </view>
   <view class='setting_line_v' wx:if="{{model==2||model==0||model==1}}">
@@ -45,7 +45,7 @@
       <text>宽度(px)</text>
     </view>
      <view class='setting_line_data'>
-      <slider bindchange="sliderChangeWidth" min="0" max="{{maxWidth==0?1000:maxWidth}}" show-value backgroundColor="#aaa" block-size="20"/>
+      <slider bindchange="sliderChangeWidth" min="0" max="{{maxWidth==0?1000:maxWidth}}" value="{{width}}" show-value backgroundColor="#aaa" block-size="20"/>
     </view>
   </view>
   <view class='setting_line_v' wx:if="{{model==3||model==0||model==1}}">
@@ -53,7 +53,7 @@
       <text>高度(px)</text>
     </view>
     <view class='setting_line_data'>
-      <slider bindchange="sliderChangeHeight" min="0" max="{{maxHeight==0?1000:maxHeight}}" show-value backgroundColor="#aaa" block-size="20"/>
+      <slider bindchange="sliderChangeHeight" min="0" max="{{maxHeight==0?1000:maxHeight}}" value="{{height}}" show-value backgroundColor="#aaa" block-size="20"/>
     </view>
     <!-- <view class='setting_line_right'>
       <view class='setting_line_data'>{{(model==0&&height==0)?"默认":height+"px"}}</view>

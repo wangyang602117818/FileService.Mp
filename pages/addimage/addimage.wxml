@@ -17,7 +17,7 @@
         <text class="iconfont icon-m-right"></text>
       </view>
     </view>
-    <view class='setting_line' wx:for="{{converts}}" wx-key="{{unique}}" catchtap='updateConvert'  data-key="{{index}}" >
+    <view class='setting_line' wx:for="{{converts}}" wx:key="{{unique}}" catchtap='updateConvert'  data-key="{{index}}" bindlongpress='delConvert' data-flag="{{item.flag}}">
       <view class='setting_line_name'>{{item.flag}}</view>
       <view class='setting_line_right'>
         <view class='setting_line_data'>{{modelItems[item.model]}}</view>
@@ -26,7 +26,7 @@
     </view>
   </view>
   <view class='access_wrap'>
-    <view class='setting_line'>
+    <view class='setting_line' catchtap='addDepartment'>
       <view class='setting_line_name bold'>权限</view>
       <view class='setting_line_data'>
         <text class="iconfont icon-m-right"></text>
