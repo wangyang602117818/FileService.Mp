@@ -1,5 +1,5 @@
 <view class='container'>
-  <view class='data_line' wx:for="{{departments}}" wx:key="unique" hover-class="data_line_hover" hover-stay-time="100" data-key="{{index}}" catchtap='selectItem'>
+  <view class='data_line' wx:for="{{departments}}" wx:key="unique" hover-class="data_line_hover" hover-stay-time="100" data-code="{{item.DepartmentCode}}" data-key="{{index}}" catchtap='selectItem'>
     <view class='select_name'>
       <block wx:for="{{item.Layer-1}}" wx:key="unique">·</block>
       {{item.DepartmentName}}

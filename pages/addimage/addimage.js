@@ -4,6 +4,13 @@ Page({
     imageUrls: [],
     converts: [],
     departments:[],
+    access:[
+      {
+        'Company':"",
+        'DepartmentCodes':[],
+        
+      }
+    ],
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
@@ -86,16 +93,14 @@ Page({
     for (var i = 0; i < this.data.departments.length;i++){
       dept.push(this.data.departments[i].DepartmentName);
     }
+    var that=this;
     wx.showActionSheet({
       itemList: dept,
       success(res) {
-        var code = this.data.departments[i].DepartmentCode;
+        var code = that.data.departments[res.tapIndex].DepartmentCode;
         wx.navigateTo({
           url: "/pages/adddepartment/adddepartment?code=" + code
         })
-      },
-      fail(res) {
-        console.log(res.errMsg)
       }
     })
     
