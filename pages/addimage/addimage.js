@@ -3,14 +3,18 @@ Page({
   data: {
     imageUrls: [],
     converts: [],
-    departments:[],
-    access:[
-      {
-        'Company':"",
-        'DepartmentCodes':[],
-        
-      }
-    ],
+    departments: [],
+    accessDepartments: [],
+  //   {
+  //   companyCode: "",
+  //   companyName: "",
+  //   accessCodes: []
+  // }
+    accessUsers: [{
+      companyCode: "",
+      companyName: "",
+      accessUsers: []
+    }],
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
@@ -51,9 +55,27 @@ Page({
       confirmColor: "#f60",
       success(res) {
         if (res.confirm) {
-          that.data.converts.splice(index,1);
+          that.data.converts.splice(index, 1);
           that.setData({
             converts: that.data.converts
+          });
+        }
+      }
+    })
+  },
+  delDepartment(e){
+    var index = e.currentTarget.dataset.key;
+    var deptname = e.currentTarget.dataset.deptname;
+    var that = this;
+    wx.showModal({
+      title: deptname,
+      content: '是否删除？',
+      confirmColor: "#f60",
+      success(res) {
+        if (res.confirm) {
+          that.data.accessDepartments.splice(index, 1);
+          that.setData({
+            accessDepartments: that.data.accessDepartments
           });
         }
       }
@@ -88,28 +110,46 @@ Page({
       url: "/pages/addconvert/addconvert?maxWidth=" + this.maxWidth + "&maxHeight=" + this.maxHeight
     })
   },
-  addDepartment(){
-    var dept=[];
-    for (var i = 0; i < this.data.departments.length;i++){
-      dept.push(this.data.departments[i].DepartmentName);
-    }
-    var that=this;
-    wx.showActionSheet({
-      itemList: dept,
-      success(res) {
-        var code = that.data.departments[res.tapIndex].DepartmentCode;
-        wx.navigateTo({
-          url: "/pages/adddepartment/adddepartment?code=" + code
-        })
+  addDepartment() {
+    var deptName = [],deptCode=[];
+    for (var i = 0; i < this.data.departments.length; i++) {
+      var exists = false;
+      for (var j = 0; j < this.data.accessDepartments.length; j++) {
+        if (this.data.departments[i].DepartmentCode == this.data.accessDepartments[j].companyCode) {
+          exists = true;
+        }
       }
-    })
-    
+      if (!exists){
+        deptName.push(this.data.departments[i].DepartmentName);
+        deptCode.push(this.data.departments[i].DepartmentCode);
+      }
+    }
+    if (deptCode.length>0){
+      var that = this;
+      wx.showActionSheet({
+        itemList: deptName,
+        success(res) {
+          var code = deptCode[res.tapIndex];
+          var name = deptName[res.tapIndex];
+          wx.navigateTo({
+            url: "/pages/adddepartment/adddepartment?code=" + code + "&name=" + name +"&departmentsSelected=[]"
+          })
+        }
+      })
+    }
   },
   updateConvert(e) {
     var index = e.currentTarget.dataset.key;
     var convert = this.data.converts[index];
     wx.navigateTo({
       url: "/pages/addconvert/addconvert?index=" + index + "&flag=" + convert.flag + "&format=" + convert.format + "&model=" + convert.model + "&x=" + convert.x + "&y=" + convert.y + "&width=" + convert.width + "&height=" + convert.height + "&imageQuality=" + convert.imageQuality
+    })
+  },
+  updateDepartment(e){
+    var index = e.currentTarget.dataset.key;
+    var accessDept = this.data.accessDepartments[index];
+    wx.navigateTo({
+      url: "/pages/adddepartment/adddepartment?index=" + index + "&code=" + accessDept.companyCode + "&name=" + accessDept.companyName + "&departmentsSelected=" +JSON.stringify(accessDept.accessCodes)
     })
   },
   checkImageMax(urls) {
@@ -128,7 +168,7 @@ Page({
     }
   },
   onLoad: function() {
-    app.get(app.baseUrl + "department/getalldepartment", {}, function (res) {
+    app.get(app.baseUrl + "department/getalldepartment", {}, function(res) {
       if (res.code == 0) {
         this.setData({
           departments: res.result,

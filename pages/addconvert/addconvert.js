@@ -86,10 +86,11 @@ Page({
       y: this.data.y,
       width: this.data.width,
       height: this.data.height,
-      imageQuality: this.data.imageQuality};
-    if(this.data.index==null){
+      imageQuality: this.data.imageQuality
+    };
+    if (this.data.index == null) {
       prevPage.data.converts.push(obj);
-    }else{
+    } else {
       prevPage.data.converts[this.data.index] = obj;
     }
     prevPage.setData({
@@ -104,24 +105,28 @@ Page({
       wx.setNavigationBarTitle({
         title: '修改转换'
       });
-      this.setData({ index: options.index});
+      this.setData({
+        index: options.index
+      });
     } else {
       wx.setNavigationBarTitle({
         title: '添加转换'
       })
-      this.setData({ index: null });
+      this.setData({
+        index: null
+      });
     }
     this.setData({
       maxWidth: options.maxWidth || 0,
       maxHeight: options.maxHeight || 0,
-      flag: options.flag||"",
+      flag: options.flag || "",
       format: options.format || 0,
-      model: options.model||0,
-      x:options.x||0,
-      y:options.y||0,
-      width:options.width||0,
-      height:options.height||0,
-      imageQuality: options.imageQuality||0
+      model: options.model || 0,
+      x: options.x || 0,
+      y: options.y || 0,
+      width: options.width || 0,
+      height: options.height || 0,
+      imageQuality: options.imageQuality || 0
     })
 
   }

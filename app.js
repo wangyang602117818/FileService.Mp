@@ -3,7 +3,7 @@ const util = require("/utils/util.js")
 App({
   onShow() {
     var pages = getCurrentPages();
-    if(pages.length>0)return;
+    if (pages.length > 0) return;
     // 登录
     wx.login({
       success: res => {
@@ -112,8 +112,8 @@ App({
   documentWps: [".odg", ".ods", ".odp", ".odf", ".odt", ".wps", ".et", ".dps"],
   images: [".jpg", ".png", ".gif", ".bmp", ".jpeg", ".pic", ".ico", ".tif", ".svg"],
   videos: [".mp4", ".avi", ".wmv", ".mov", ".mkv", ".flv", ".rm", ".rmvb", ".m3u8"],
-  audios:[".mp3"],
-  text:[".txt",".js",".html",".htm",".css",".json"],
+  audios: [".mp3"],
+  text: [".txt", ".js", ".html", ".htm", ".css", ".json"],
   apiType: "none",
   token: "",
   extensions: [],

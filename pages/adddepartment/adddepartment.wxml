@@ -9,5 +9,7 @@
       <text class="iconfont icon-m-selected" wx:if="{{!item.selected}}"></text>
     </view>
   </view>
-  <button class="buttom_primary" hover-class='buttom_primary_hover' bindtap='ok'> 确 定 </button>
+  <view class='button_fixed' hover-class='buttom_primary_hover' bindtap='ok'>OK</view>
+
+
 </view>

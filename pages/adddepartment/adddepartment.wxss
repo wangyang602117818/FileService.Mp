@@ -1,12 +1,17 @@
-.data_line{
+.container {
+  padding-bottom: 60rpx;
+}
+
+.data_line {
   width: 100%;
- 
 }
-.select_name{
+
+.select_name {
   font-size: 32rpx;
-  flex: 1
+  flex: 1;
 }
-.select_icon{
+
+.select_icon {
   display: flex;
   align-items: center;
   justify-content: flex-end;
