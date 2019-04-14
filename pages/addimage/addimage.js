@@ -138,6 +138,34 @@ Page({
       })
     }
   },
+  addUser(e){
+    var deptName = [], deptCode = [];
+    for (var i = 0; i < this.data.departments.length; i++) {
+      var exists = false;
+      for (var j = 0; j < this.data.accessUsers.length; j++) {
+        if (this.data.departments[i].DepartmentCode == this.data.accessUsers[j].companyCode) {
+          exists = true;
+        }
+      }
+      if (!exists) {
+        deptName.push(this.data.departments[i].DepartmentName);
+        deptCode.push(this.data.departments[i].DepartmentCode);
+      }
+    }
+    if (deptCode.length > 0) {
+      var that = this;
+      wx.showActionSheet({
+        itemList: deptName,
+        success(res) {
+          var code = deptCode[res.tapIndex];
+          var name = deptName[res.tapIndex];
+          wx.navigateTo({
+            url: "/pages/addduser/addduser?code=" + code + "&name=" + name + "&userSelected=[]"
+          })
+        }
+      })
+    }
+  },
   updateConvert(e) {
     var index = e.currentTarget.dataset.key;
     var convert = this.data.converts[index];
