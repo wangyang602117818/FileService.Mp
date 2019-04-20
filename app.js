@@ -9,7 +9,6 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (this.token.length > 0) {
-          // this.getExtensions();
           wx.switchTab({
             url: '/pages/index/index'
           })

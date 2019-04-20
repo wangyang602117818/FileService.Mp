@@ -5,6 +5,7 @@ Page({
   data: {
     userId: "",
     userName: "",
+    userCode:"",
     role: "",
     createTime: "",
     company: "",
@@ -33,16 +34,16 @@ Page({
   onLoad: function(options) {
     var res = app.token.match(/\.(\w+)\./i)[1];
     var base64 = util.base64Decode(res);
-    var userName = base64.match(/\"http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/name":"(.+?)"/i)[1];
+    var userCode = base64.match(/\"http:\/\/schemas.xmlsoap.org\/ws\/2005\/05\/identity\/claims\/name":"(.+?)"/i)[1];
     var role = base64.match(/\"http:\/\/schemas.microsoft.com\/ws\/2008\/06\/identity\/claims\/role":"(.+?)"/i)[1];
-    var userId = base64.match(/"UserId":"(.+?)"/i)[1];
+    var userName = base64.match(/"UserName":"(.+?)"/i)[1];
     var that = this;
     that.setData({
       userName: userName,
       role: role,
-      userId: userId,
+      userCode: userCode,
     }, function() {
-      app.get(app.baseUrl + "home/getuser/" + userId, {}, function(res) {
+      app.get(app.baseUrl + "home/getuser?userCode=" + userCode, {}, function(res) {
         if (res.code == 0) {
           that.setData({
             company: res.result.CompanyDisplay,

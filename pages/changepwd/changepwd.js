@@ -3,6 +3,7 @@ const util = require("../../utils/util.js")
 Page({
   data: {
     userName: "",
+    userCode:"",
     role: "",
     password: "",
     password2: ""

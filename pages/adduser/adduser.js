@@ -9,7 +9,7 @@ Page({
     index: null
   },
   ok: function () {
-    console.log(this.data.departmentsSelected);
+    
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     var obj = {
@@ -57,10 +57,10 @@ Page({
     }
   },
   onLoad: function (options) {
-    app.get(app.baseUrl + "department/getdepartment?code=" + options.code, {}, function (res) {
+    app.get(app.baseUrl + "user/getusers?company=" + options.code, {}, function (res) {
       if (res.code == 0) {
-        this.data.departmentsSelected = JSON.parse(options.departmentsSelected);
-        this.data.departments = res.result;
+        this.data.userSelected = JSON.parse(options.userSelected);
+        this.data.users = res.result;
         this.checkSelected();
         this.setData({
           companyCode: options.code,

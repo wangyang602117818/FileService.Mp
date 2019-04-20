@@ -13,8 +13,8 @@
     
     "pages/addimage/addimage",
     "pages/adddepartment/adddepartment",
-    "pages/addconvert/addconvert"
-    
+    "pages/addconvert/addconvert",
+    "pages/adduser/adduser"
   ],
   "tabBar": {
     "color": "#5f5d5d",

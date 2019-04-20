@@ -23,7 +23,7 @@ Page({
     wx.login({
       success:res=>{
         app.post(app.baseUrl + "home/login", {
-          userName: userName,
+          userCode: userName,
           passWord: passWord,
           authCode:app.authCode,
           apiType: app.apiType,

@@ -160,7 +160,7 @@ Page({
           var code = deptCode[res.tapIndex];
           var name = deptName[res.tapIndex];
           wx.navigateTo({
-            url: "/pages/addduser/addduser?code=" + code + "&name=" + name + "&userSelected=[]"
+            url: "/pages/adduser/adduser?code=" + code + "&name=" + name + "&userSelected=[]"
           })
         }
       })
