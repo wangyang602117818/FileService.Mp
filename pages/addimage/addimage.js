@@ -10,17 +10,18 @@ Page({
   //   companyName: "",
   //   accessCodes: []
   // }
-    accessUsers: [{
-      companyCode: "",
-      companyName: "",
-      accessUsers: []
-    }],
+    accessUsers: [],
+  //   {
+  //   companyCode: "",
+  //   companyName: "",
+  //   accessUsers: []
+  // }
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
   maxWidth: 0,
   maxHeight: 0,
-  previewFile: function(e) {
+  previewFile(e) {
     if (this.data.longPressIndex > 0) {
       this.setData({
         longPressIndex: 0
@@ -81,7 +82,25 @@ Page({
       }
     })
   },
-  removeItem: function(e) {
+  delUser(e){
+    var index = e.currentTarget.dataset.key;
+    var deptname = e.currentTarget.dataset.deptname;
+    var that = this;
+    wx.showModal({
+      title: deptname,
+      content: '是否删除？',
+      confirmColor: "#f60",
+      success(res) {
+        if (res.confirm) {
+          that.data.accessUsers.splice(index, 1);
+          that.setData({
+            accessUsers: that.data.accessUsers
+          });
+        }
+      }
+    })
+  },
+  removeItem(e) {
     var id = e.currentTarget.dataset.id;
     this.data.imageUrls.splice(id, 1);
     this.setData({
@@ -91,7 +110,7 @@ Page({
       this.checkImageMax(this.data.imageUrls);
     }.bind(this))
   },
-  chooseImage: function() {
+  chooseImage() {
     var that = this;
     wx.chooseImage({
       success: function(res) {
@@ -180,6 +199,13 @@ Page({
       url: "/pages/adddepartment/adddepartment?index=" + index + "&code=" + accessDept.companyCode + "&name=" + accessDept.companyName + "&departmentsSelected=" +JSON.stringify(accessDept.accessCodes)
     })
   },
+  updateUser(e){
+    var index = e.currentTarget.dataset.key;
+    var accessUser = this.data.accessUsers[index];
+    wx.navigateTo({
+      url: "/pages/adduser/adduser?index=" + index + "&code=" + accessUser.companyCode + "&name=" + accessUser.companyName + "&userSelected=" + JSON.stringify(accessUser.accessUsers)
+    })
+  },
   checkImageMax(urls) {
     var that = this;
     that.maxWidth = 0;
@@ -194,6 +220,33 @@ Page({
         }
       })
     }
+  },
+  ok(e){
+    var access=[];
+    if (this.data.accessDepartments.length >= this.data.accessUsers.length){
+      for (var i = 0; i < this.data.accessDepartments.length; i++) {
+        access.push({
+          company: this.data.accessDepartments[i].companyCode,
+          departmentCodes: this.data.accessDepartments[i].accessCodes,
+          accessUsers: []
+        })
+      }
+      for (var j = 0; j < this.data.accessUsers.length; j++) {
+        access[j].accessUsers = this.data.accessUsers[j].accessUsers;
+      }
+    }else{
+      for (var i = 0; i < this.data.accessUsers.length; i++) {
+        access.push({
+          company: this.data.accessUsers[i].companyCode,
+          departmentCodes: [],
+          accessUsers: this.data.accessUsers[i].accessUsers
+        })
+      }
+      for (var j = 0; j < this.data.accessDepartments.length;j++){
+        access[j].departmentCodes = this.data.accessDepartments[j].accessCodes;
+      }
+    }
+    console.log(access);
   },
   onLoad: function() {
     app.get(app.baseUrl + "department/getalldepartment", {}, function(res) {

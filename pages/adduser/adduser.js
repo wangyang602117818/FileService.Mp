@@ -9,21 +9,20 @@ Page({
     index: null
   },
   ok: function () {
-    
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     var obj = {
       companyCode: this.data.companyCode,
       companyName: this.data.companyName,
-      accessCodes: this.data.departmentsSelected
+      accessUsers: this.data.userSelected
     };
     if (this.data.index == null) {
-      prevPage.data.accessDepartments.push(obj);
+      prevPage.data.accessUsers.push(obj);
     } else {
-      prevPage.data.accessDepartments[this.data.index] = obj;
+      prevPage.data.accessUsers[this.data.index] = obj;
     }
     prevPage.setData({
-      accessDepartments: prevPage.data.accessDepartments
+      accessUsers: prevPage.data.accessUsers
     });
     wx.navigateBack({
       delta: 1
@@ -49,7 +48,7 @@ Page({
   },
   checkSelected() {
     for (var k = 0; k < this.data.users.length; k++) {
-      if (this.data.userSelected.indexOf(this.data.users[k].DepartmentCode) > -1) {
+      if (this.data.userSelected.indexOf(this.data.users[k].UserCode) > -1) {
         this.data.users[k].selected = true;
       } else {
         this.data.users[k].selected = false;
@@ -65,8 +64,8 @@ Page({
         this.setData({
           companyCode: options.code,
           companyName: options.name,
-          departments: this.data.departments,
-          departmentsSelected: this.data.departmentsSelected
+          users: this.data.users,
+          userSelected: this.data.userSelected
         });
         if (options.index >= 0) {
           wx.setNavigationBarTitle({

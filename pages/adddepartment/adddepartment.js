@@ -9,7 +9,6 @@ Page({
     index: null
   },
   ok: function() {
-    console.log(this.data.departmentsSelected);
     let pages = getCurrentPages();
     let prevPage = pages[pages.length - 2];
     var obj = {
