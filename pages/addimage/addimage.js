@@ -5,17 +5,17 @@ Page({
     converts: [],
     departments: [],
     accessDepartments: [],
-  //   {
-  //   companyCode: "",
-  //   companyName: "",
-  //   accessCodes: []
-  // }
+    //   {
+    //   companyCode: "",
+    //   companyName: "",
+    //   accessCodes: []
+    // }
     accessUsers: [],
-  //   {
-  //   companyCode: "",
-  //   companyName: "",
-  //   accessUsers: []
-  // }
+    //   {
+    //   companyCode: "",
+    //   companyName: "",
+    //   accessUsers: []
+    // }
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
@@ -64,7 +64,7 @@ Page({
       }
     })
   },
-  delDepartment(e){
+  delDepartment(e) {
     var index = e.currentTarget.dataset.key;
     var deptname = e.currentTarget.dataset.deptname;
     var that = this;
@@ -82,7 +82,7 @@ Page({
       }
     })
   },
-  delUser(e){
+  delUser(e) {
     var index = e.currentTarget.dataset.key;
     var deptname = e.currentTarget.dataset.deptname;
     var that = this;
@@ -106,15 +106,15 @@ Page({
     this.setData({
       imageUrls: this.data.imageUrls,
       longPressIndex: 0
-    }, function() {
+    }, function () {
       this.checkImageMax(this.data.imageUrls);
     }.bind(this))
   },
   chooseImage() {
     var that = this;
     wx.chooseImage({
-      success: function(res) {
-        res.tempFilePaths.forEach(function(value, index) {
+      success: function (res) {
+        res.tempFilePaths.forEach(function (value, index) {
           that.data.imageUrls.push(value);
         });
         that.setData({
@@ -130,7 +130,7 @@ Page({
     })
   },
   addDepartment() {
-    var deptName = [],deptCode=[];
+    var deptName = [], deptCode = [];
     for (var i = 0; i < this.data.departments.length; i++) {
       var exists = false;
       for (var j = 0; j < this.data.accessDepartments.length; j++) {
@@ -138,12 +138,12 @@ Page({
           exists = true;
         }
       }
-      if (!exists){
+      if (!exists) {
         deptName.push(this.data.departments[i].DepartmentName);
         deptCode.push(this.data.departments[i].DepartmentCode);
       }
     }
-    if (deptCode.length>0){
+    if (deptCode.length > 0) {
       var that = this;
       wx.showActionSheet({
         itemList: deptName,
@@ -151,13 +151,13 @@ Page({
           var code = deptCode[res.tapIndex];
           var name = deptName[res.tapIndex];
           wx.navigateTo({
-            url: "/pages/adddepartment/adddepartment?code=" + code + "&name=" + name +"&departmentsSelected=[]"
+            url: "/pages/adddepartment/adddepartment?code=" + code + "&name=" + name + "&departmentsSelected=[]"
           })
         }
       })
     }
   },
-  addUser(e){
+  addUser(e) {
     var deptName = [], deptCode = [];
     for (var i = 0; i < this.data.departments.length; i++) {
       var exists = false;
@@ -192,14 +192,14 @@ Page({
       url: "/pages/addconvert/addconvert?index=" + index + "&flag=" + convert.flag + "&format=" + convert.format + "&model=" + convert.model + "&x=" + convert.x + "&y=" + convert.y + "&width=" + convert.width + "&height=" + convert.height + "&imageQuality=" + convert.imageQuality
     })
   },
-  updateDepartment(e){
+  updateDepartment(e) {
     var index = e.currentTarget.dataset.key;
     var accessDept = this.data.accessDepartments[index];
     wx.navigateTo({
-      url: "/pages/adddepartment/adddepartment?index=" + index + "&code=" + accessDept.companyCode + "&name=" + accessDept.companyName + "&departmentsSelected=" +JSON.stringify(accessDept.accessCodes)
+      url: "/pages/adddepartment/adddepartment?index=" + index + "&code=" + accessDept.companyCode + "&name=" + accessDept.companyName + "&departmentsSelected=" + JSON.stringify(accessDept.accessCodes)
     })
   },
-  updateUser(e){
+  updateUser(e) {
     var index = e.currentTarget.dataset.key;
     var accessUser = this.data.accessUsers[index];
     wx.navigateTo({
@@ -214,16 +214,16 @@ Page({
       var url = urls[i];
       wx.getImageInfo({
         src: url,
-        success: function(data) {
+        success: function (data) {
           if (data.width > that.maxWidth) that.maxWidth = data.width;
           if (data.height > that.maxHeight) that.maxHeight = data.height;
         }
       })
     }
   },
-  ok(e){
-    var access=[];
-    if (this.data.accessDepartments.length >= this.data.accessUsers.length){
+  ok(e) {
+    var access = [];
+    if (this.data.accessDepartments.length >= this.data.accessUsers.length) {
       for (var i = 0; i < this.data.accessDepartments.length; i++) {
         access.push({
           company: this.data.accessDepartments[i].companyCode,
@@ -234,7 +234,7 @@ Page({
       for (var j = 0; j < this.data.accessUsers.length; j++) {
         access[j].accessUsers = this.data.accessUsers[j].accessUsers;
       }
-    }else{
+    } else {
       for (var i = 0; i < this.data.accessUsers.length; i++) {
         access.push({
           company: this.data.accessUsers[i].companyCode,
@@ -242,14 +242,19 @@ Page({
           accessUsers: this.data.accessUsers[i].accessUsers
         })
       }
-      for (var j = 0; j < this.data.accessDepartments.length;j++){
+      for (var j = 0; j < this.data.accessDepartments.length; j++) {
         access[j].departmentCodes = this.data.accessDepartments[j].accessCodes;
       }
     }
+    var data = {
+      outPut: JSON.stringify(this.data.converts),
+      access: JSON.stringify(access)
+    };
+    
     console.log(access);
   },
-  onLoad: function() {
-    app.get(app.baseUrl + "department/getalldepartment", {}, function(res) {
+  onLoad: function () {
+    app.get(app.baseUrl + "department/getalldepartment", {}, function (res) {
       if (res.code == 0) {
         this.setData({
           departments: res.result,

@@ -17,7 +17,7 @@ App({
             authCode: this.authCode,
             apiType: this.apiType,
             code: res.code
-          }, function(result) {
+          }, function (result) {
             if (result.code == 0) {
               this.token = result.result;
               // wx.switchTab({
@@ -32,7 +32,7 @@ App({
       }
     })
   },
-  onLaunch: function() {
+  onLaunch: function () {
     var pages = getCurrentPages();
     if (pages.length > 0) return;
     // 展示本地存储能力
@@ -61,11 +61,11 @@ App({
     })
   },
   getExtensions() {
-    this.get(this.baseUrl + "files/getextensions", {}, function(result) {
+    this.get(this.baseUrl + "files/getextensions", {}, function (result) {
       if (result.code == 0) this.extensions = result.result;
     }.bind(this));
   },
-  post: function(url, data, success, loading) {
+  post: function (url, data, success, loading) {
     if (loading) wx.showLoading({
       title: "loading",
       mask: true
@@ -85,7 +85,35 @@ App({
       }
     })
   },
-  get: function(url, data, success, loading) {
+  postFiles: function (url, tempFilePaths, name, data, success, allcomplete) {
+    var index = 0;
+    for (var i = 0; i < tempFilePaths.length; i++) {
+      var path = tempFilePaths[i];
+      this.postFile(url, path, name, data, success, function () {
+        index++;
+        if (index == tempFilePaths.length) allcomplete();
+      });
+    }
+  },
+  postFile: function (url, filePath, name, data, success, complete) {
+    wx.uploadFile({
+      url: url,
+      filePath: filePath,
+      name: name,
+      formData: data,
+      header: {
+        'Authorization': this.token
+      },
+      success(res) {
+        const data = res.data
+        success(data);
+      },
+      complete() {
+        complete();
+      }
+    })
+  },
+  get: function (url, data, success, loading) {
     if (loading) wx.showLoading({
       title: "loading",
       mask: true
