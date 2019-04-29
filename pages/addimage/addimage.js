@@ -247,11 +247,17 @@ Page({
       }
     }
     var data = {
-      outPut: JSON.stringify(this.data.converts),
+      output: JSON.stringify(this.data.converts),
       access: JSON.stringify(access)
     };
-    
-    console.log(access);
+    console.log(data);
+    app.postFiles(app.baseUrl + "home/login", imageUrls, "images", data
+      , function (result) {
+        console.log(result);
+      }, function () {
+        console.log("all complete");
+      }
+    );
   },
   onLoad: function () {
     app.get(app.baseUrl + "department/getalldepartment", {}, function (res) {
