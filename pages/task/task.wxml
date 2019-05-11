@@ -19,7 +19,7 @@
         <text class="task_state task_error" wx:if="{{item.State == -1 || item.State == -100}}"></text>
       </view>
       <view class="data_meta">
-        <view class="data_meta_title">{{funs.getFileName(item.FileName,12)}}
+        <view class="data_meta_title">{{funs.getFileName(item.FileName,10)}}
           <text class="iconfont icon-m-c" wx:if="{{item.FileExists}}"></text>
         </view>
         <view class="data_meta_subtitle">

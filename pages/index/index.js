@@ -36,6 +36,16 @@ Page({
       url:"/pages/addimage/addimage"
     })
   },
+  addVideo(e){
+    wx.navigateTo({
+      url: "/pages/addvideo/addvideo"
+    })
+  },
+  addAttachment(e){
+    wx.navigateTo({
+      url: "/pages/addattachment/addattachment"
+    })
+  },
   changeList(e) {
     this.setData({
       showBottomFun: false,

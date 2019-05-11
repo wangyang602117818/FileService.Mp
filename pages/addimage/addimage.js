@@ -5,17 +5,7 @@ Page({
     converts: [],
     departments: [],
     accessDepartments: [],
-    //   {
-    //   companyCode: "",
-    //   companyName: "",
-    //   accessCodes: []
-    // }
     accessUsers: [],
-    //   {
-    //   companyCode: "",
-    //   companyName: "",
-    //   accessUsers: []
-    // }
     modelItems: ['缩放', '剪切', '按宽度', '按高度'],
     longPressIndex: 0
   },
@@ -250,12 +240,12 @@ Page({
       output: JSON.stringify(this.data.converts),
       access: JSON.stringify(access)
     };
-    console.log(data);
-    app.postFiles(app.baseUrl + "home/login", imageUrls, "images", data
+    app.postFiles(app.baseUrl + "upload/image", this.data.imageUrls, "images", data
       , function (result) {
-        console.log(result);
       }, function () {
-        console.log("all complete");
+        wx.switchTab({
+          url: '/pages/index/index'
+        });
       }
     );
   },

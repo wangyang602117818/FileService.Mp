@@ -12,8 +12,11 @@
     "pages/previewtext/previewtext",
     
     "pages/addimage/addimage",
+    "pages/addvideo/addvideo",
+    "pages/addattachment/addattachment",
     "pages/adddepartment/adddepartment",
     "pages/addconvert/addconvert",
+    "pages/addvideoconvert/addvideoconvert",
     "pages/adduser/adduser"
   ],
   "tabBar": {

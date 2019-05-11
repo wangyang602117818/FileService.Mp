@@ -253,7 +253,9 @@ slider {
   margin: 5rpx 15rpx;
   width: 100%;
 }
-
+.tasking{
+  color: #ccc;
+}
 .icon-m-detail:before {
   content: "\e626";
 }

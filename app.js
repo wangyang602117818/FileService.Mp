@@ -20,12 +20,12 @@ App({
           }, function (result) {
             if (result.code == 0) {
               this.token = result.result;
-              // wx.switchTab({
-              //   url: '/pages/index/index'
-              // })
-              wx.navigateTo({
-                url: '/pages/addimage/addimage',
+              wx.switchTab({
+                url: '/pages/index/index'
               })
+              // wx.navigateTo({
+              //   url: '/pages/addattachment/addattachment',
+              // })
             }
           }.bind(this), true);
         }
@@ -87,11 +87,18 @@ App({
   },
   postFiles: function (url, tempFilePaths, name, data, success, allcomplete) {
     var index = 0;
+    wx.showLoading({
+      title: 'Uploading...',
+      mask: true
+    });
     for (var i = 0; i < tempFilePaths.length; i++) {
       var path = tempFilePaths[i];
       this.postFile(url, path, name, data, success, function () {
         index++;
-        if (index == tempFilePaths.length) allcomplete();
+        if (index == tempFilePaths.length){
+          wx.hideLoading();
+          allcomplete();
+        } 
       });
     }
   },
